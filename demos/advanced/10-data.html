@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 自定义数据与模板 · 高级 HTML 编程</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: #f5f7fb; color: #1f2430;
+         font: 16px/1.7 system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  a { color: #2563eb; }
+  h1 { font-size: 24px; margin: 18px 0 6px; }
+  .lead { margin: 0 0 18px; color: #5b6472; }
+  .points { background: #fff; border: 1px solid #e3e7ef; border-radius: 10px; padding: 6px 20px 14px; margin: 0 0 18px; }
+  .points h2 { font-size: 15px; color: #1d4ed8; margin: 14px 0 6px; }
+  .points ul { margin: 0; padding-left: 20px; }
+  .points li { margin: 4px 0; }
+  code { background: #eef2ff; color: #3730a3; padding: 1px 5px; border-radius: 4px; font-size: 14px; }
+  .code-box { background: #1e2333; border-radius: 10px; overflow: hidden; }
+  .code-head { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: #171b28; color: #9aa4c0; font-size: 13px; }
+  .code-head .spacer { flex: 1; }
+  .btn { background: #2c3350; color: #dfe4f2; border: 0; border-radius: 6px; padding: 5px 10px; font-size: 13px; cursor: pointer; }
+  .btn:hover { background: #3a4468; }
+  textarea.code { display: block; width: 100%; border: 0; outline: none; resize: vertical;
+                  background: transparent; color: #e6e9f2; padding: 14px; min-height: 110px;
+                  font: 13.5px/1.6 ui-monospace, Consolas, "Courier New", monospace; }
+  .preview-box { background: #fff; border: 1px solid #e3e7ef; border-radius: 10px; margin-top: 14px; overflow: hidden; }
+  .preview-head { padding: 8px 12px; border-bottom: 1px solid #eef1f6; color: #6b7280; font-size: 13px; }
+  iframe { display: block; width: 100%; border: 0; min-height: 220px; }
+  .pager { display: flex; justify-content: space-between; gap: 10px; margin: 26px 0 6px; font-size: 14px; }
+  .pager .off { color: #9aa4c0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>10 · 自定义数据与模板</h1>
+  <p class="lead">最后一课：给标签挂上自己的数据、把 HTML 片段存起来复用、以及让任何一块内容都能编辑。</p>
+
+  <section class="points">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>data-*</code> 是 HTML 官方留给你的自定义属性：<code>data-id="101"</code>、<code>data-price="39"</code>。</li>
+      <li>JS 里用 <code>element.dataset</code> 读，连字符会变成驼峰：<code>data-price</code> → <code>dataset.price</code>。</li>
+      <li>用 <code>data-*</code> 存数据的好处：元素被克隆、移动、排序时，数据跟着它一起走，不用另外维护一张表。</li>
+      <li><code>&lt;template&gt;</code> 里的内容<strong>不会</strong>显示，也不会加载里面的图片，纯粹是一份「模板」，要用 JS 克隆（<code>content.cloneNode(true)</code>）才会出现在页面上。</li>
+      <li><code>contenteditable="true"</code> 让任何元素变成可编辑区：打字、光标、输入法（中文候选框）浏览器都帮你处理好了。</li>
+      <li><code>hidden</code> 属性可以直接隐藏元素，等同于 CSS 的 <code>display: none</code>。</li>
+    </ul>
+  </section>
+
+  <section class="demo">
+    <div class="code-box">
+      <div class="code-head">
+        <span>data-template.html</span>
+        <span class="spacer"></span>
+        <button class="btn btn-run">运行</button>
+        <button class="btn btn-reset">重置</button>
+        <button class="btn btn-copy">复制</button>
+      </div>
+<textarea class="code" spellcheck="false">&lt;h3&gt;data-*：把数据挂在元素身上&lt;/h3&gt;
+&lt;ul id="goods"&gt;
+  &lt;li data-id="101" data-price="39"&gt;HTML 入门&lt;/li&gt;
+  &lt;li data-id="102" data-price="45"&gt;CSS 实战&lt;/li&gt;
+  &lt;li data-id="103" data-price="59"&gt;JavaScript 进阶&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p id="out" style="color:#475569"&gt;点上面任意一本书&lt;/p&gt;
+
+&lt;h3&gt;template：写一次，用很多次&lt;/h3&gt;
+&lt;template id="card"&gt;
+  &lt;div style="border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin:8px 0"&gt;
+    &lt;strong class="name"&gt;&lt;/strong&gt;
+    &lt;span class="tag" style="color:#64748b"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;div id="cards"&gt;&lt;/div&gt;
+
+&lt;h3&gt;contenteditable：整块内容都能改&lt;/h3&gt;
+&lt;div contenteditable="true"
+     style="border:2px dashed #cbd5e1;border-radius:8px;padding:10px 14px"&gt;
+  点这里就能直接改字，中文输入法的候选框也正常。
+&lt;/div&gt;
+
+&lt;script&gt;
+  // 1) 读 data-*
+  document.querySelectorAll('#goods li').forEach(function (li) {
+    li.style.cursor = 'pointer';
+    li.style.padding = '4px 0';
+    li.onclick = function () {
+      document.getElementById('out').textContent =
+        '你点了「' + li.textContent + '」：id=' + li.dataset.id +
+        '，价格=' + li.dataset.price + ' 元';
+    };
+  });
+
+  // 2) 用 template 生成卡片
+  var tpl = document.getElementById('card');
+  var books = [
+    { name: 'HTML 入门', tag: '· 已上架' },
+    { name: 'CSS 实战', tag: '· 已上架' },
+    { name: 'JavaScript 进阶', tag: '· 预售中' }
+  ];
+  books.forEach(function (b) {
+    var node = tpl.content.cloneNode(true);   // 克隆模板
+    node.querySelector('.name').textContent = b.name;
+    node.querySelector('.tag').textContent = b.tag;
+    document.getElementById('cards').appendChild(node);
+  });
+&lt;/script&gt;</textarea>
+    </div>
+    <div class="preview-box">
+      <div class="preview-head">预览 · 点书籍、改那行虚线框里的字、看模板生成的卡片</div>
+      <iframe title="演示" style="min-height: 620px"></iframe>
+    </div>
+  </section>
+
+  <nav class="pager">
+    <a href="09-accessibility.html">← 上一课</a>
+    <a href="index.html">返回目录</a>
+    <span class="off">已是最后一课</span>
+  </nav>
+</div>
+
+<script>
+  // 代码框与预览框联动：修改代码后点「运行」重新渲染
+  function runDemo(box) {
+    var ta = box.querySelector('textarea.code');
+    var frame = box.querySelector('iframe');
+    var code = ta.value.trim();
+    // 站点根目录，示例里写 assets/... 就能引用图片、音频、SVG
+    var base = new URL('../../', location.href).href;
+    // 片段自动补上完整文档结构，保证能独立渲染
+    frame.srcdoc = /<!doctype|<html[\s>]/i.test(code)
+      ? code
+      : '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><base href="' + base + '">'
+        + '<style>body{margin:0;padding:14px;font:16px/1.6 system-ui,"PingFang SC","Microsoft YaHei",sans-serif;color:#1f2430}'
+        + 'img,video,canvas{max-width:100%}button,input,select,textarea{font:inherit}</style>'
+        + '</head><body>' + code + '</body></html>';
+  }
+
+  document.querySelectorAll('.demo').forEach(function (box) {
+    var ta = box.querySelector('textarea.code');
+    var first = ta.value;
+
+    box.querySelector('.btn-run').onclick = function () { runDemo(box); };
+    box.querySelector('.btn-reset').onclick = function () { ta.value = first; runDemo(box); };
+    box.querySelector('.btn-copy').onclick = function () {
+      ta.focus();
+      ta.select();
+      document.execCommand('copy');
+      ta.setSelectionRange(0, 0);
+      var btn = this;
+      btn.textContent = '已复制';
+      setTimeout(function () { btn.textContent = '复制'; }, 1200);
+    };
+    ta.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') runDemo(box);
+    });
+
+    runDemo(box);
+  });
+</script>
+</body>
+</html>

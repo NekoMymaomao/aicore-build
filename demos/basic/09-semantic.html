@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>09 语义化标签 · HTML 基础教程</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: #f5f7fb; color: #1f2430;
+         font: 16px/1.7 system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  a { color: #2563eb; }
+  h1 { font-size: 24px; margin: 18px 0 6px; }
+  .lead { margin: 0 0 18px; color: #5b6472; }
+  .points { background: #fff; border: 1px solid #e3e7ef; border-radius: 10px; padding: 6px 20px 14px; margin: 0 0 18px; }
+  .points h2 { font-size: 15px; color: #2563eb; margin: 14px 0 6px; }
+  .points ul { margin: 0; padding-left: 20px; }
+  .points li { margin: 4px 0; }
+  code { background: #eef2ff; color: #3730a3; padding: 1px 5px; border-radius: 4px; font-size: 14px; }
+  .code-box { background: #1e2333; border-radius: 10px; overflow: hidden; }
+  .code-head { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: #171b28; color: #9aa4c0; font-size: 13px; }
+  .code-head .spacer { flex: 1; }
+  .btn { background: #2c3350; color: #dfe4f2; border: 0; border-radius: 6px; padding: 5px 10px; font-size: 13px; cursor: pointer; }
+  .btn:hover { background: #3a4468; }
+  textarea.code { display: block; width: 100%; border: 0; outline: none; resize: vertical;
+                  background: transparent; color: #e6e9f2; padding: 14px; min-height: 110px;
+                  font: 13.5px/1.6 ui-monospace, Consolas, "Courier New", monospace; }
+  .preview-box { background: #fff; border: 1px solid #e3e7ef; border-radius: 10px; margin-top: 14px; overflow: hidden; }
+  .preview-head { padding: 8px 12px; border-bottom: 1px solid #eef1f6; color: #6b7280; font-size: 13px; }
+  iframe { display: block; width: 100%; border: 0; min-height: 180px; }
+  .pager { display: flex; justify-content: space-between; gap: 10px; margin: 26px 0 6px; font-size: 14px; }
+  .pager .off { color: #9aa4c0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>09 · 语义化标签</h1>
+  <p class="lead">这些标签的外观和普通容器差不多，但名字本身就在说明「这块内容是什么用途」。</p>
+
+  <section class="points">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>&lt;header&gt;</code> 页头，<code>&lt;footer&gt;</code> 页脚，<code>&lt;nav&gt;</code> 导航。</li>
+      <li><code>&lt;main&gt;</code> 放页面主体内容，一个页面通常只出现一次。</li>
+      <li><code>&lt;article&gt;</code> 是一篇能独立成立的内容，<code>&lt;section&gt;</code> 是主题相关的一组内容。</li>
+      <li>用语义标签代替一堆 <code>div</code>，代码更好读，搜索引擎和读屏软件也更容易理解页面结构。</li>
+    </ul>
+  </section>
+
+  <section class="demo">
+    <div class="code-box">
+      <div class="code-head">
+        <span>semantic.html</span>
+        <span class="spacer"></span>
+        <button class="btn btn-run">运行</button>
+        <button class="btn btn-reset">重置</button>
+        <button class="btn btn-copy">复制</button>
+      </div>
+<textarea class="code" spellcheck="false">&lt;body style="font-family: sans-serif; margin: 0"&gt;
+  &lt;header style="background: #eef2ff; padding: 12px 16px"&gt;
+    &lt;h1 style="margin: 0"&gt;我的博客&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;a href="#"&gt;首页&lt;/a&gt; ·
+      &lt;a href="#"&gt;归档&lt;/a&gt; ·
+      &lt;a href="#"&gt;关于&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main style="padding: 16px"&gt;
+    &lt;article style="border: 1px solid #ddd; border-radius: 8px; padding: 12px"&gt;
+      &lt;h2 style="margin-top: 0"&gt;第一篇笔记&lt;/h2&gt;
+      &lt;p&gt;语义化标签让结构一目了然。&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;footer style="padding: 16px; color: #888"&gt;© 2026 我的博客&lt;/footer&gt;
+&lt;/body&gt;</textarea>
+    </div>
+    <div class="preview-box">
+      <div class="preview-head">预览 · 效果朴素，价值在于结构清楚</div>
+      <iframe title="演示" style="min-height: 320px"></iframe>
+    </div>
+  </section>
+
+  <nav class="pager">
+    <a href="08-forms.html">← 上一课</a>
+    <a href="index.html">返回目录</a>
+    <a href="10-div-span.html">下一课 →</a>
+  </nav>
+</div>
+
+<script>
+  // 代码框与预览框联动：修改代码后点「运行」重新渲染
+  function runDemo(box) {
+    var ta = box.querySelector('textarea.code');
+    var frame = box.querySelector('iframe');
+    var code = ta.value.trim();
+    // 若只是一段片段，就自动包上完整文档结构，保证能独立渲染
+    frame.srcdoc = /<!doctype|<html[\s>]/i.test(code)
+      ? code
+      : '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">' +
+        '<style>body{margin:0;padding:14px;font:16px/1.6 system-ui,"PingFang SC","Microsoft YaHei",sans-serif;color:#1f2430}</style>' +
+        '</head><body>' + code + '</body></html>';
+  }
+
+  document.querySelectorAll('.demo').forEach(function (box) {
+    var ta = box.querySelector('textarea.code');
+    var first = ta.value;
+
+    box.querySelector('.btn-run').onclick = function () { runDemo(box); };
+    box.querySelector('.btn-reset').onclick = function () { ta.value = first; runDemo(box); };
+    box.querySelector('.btn-copy').onclick = function () {
+      ta.focus();
+      ta.select();
+      document.execCommand('copy');
+      ta.setSelectionRange(0, 0);
+      var btn = this;
+      btn.textContent = '已复制';
+      setTimeout(function () { btn.textContent = '复制'; }, 1200);
+    };
+    ta.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') runDemo(box);
+    });
+
+    runDemo(box);
+  });
+</script>
+</body>
+</html>
