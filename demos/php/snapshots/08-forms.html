@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>预览 · 08-forms.php</title>
+<style>
+body{margin:0;padding:16px 18px;background:#fff;color:#1f2430;
+     font:16px/1.7 system-ui,"PingFang SC","Microsoft YaHei",sans-serif}
+h2{font-size:19px;margin:0 0 10px}
+h3{font-size:16px;margin:18px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:22px;margin:8px 0}
+li{margin:3px 0}
+code{background:#eef2ff;color:#3730a3;padding:1px 5px;border-radius:4px;font-size:14px}
+pre{background:#f1f5f9;border-radius:8px;padding:10px 12px;overflow:auto;font-size:13px;line-height:1.5}
+.box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px}
+label{display:inline-block;margin:4px 0}
+input,select,button{font:inherit;padding:5px 9px;border-radius:6px}
+input[type=text],input[type=password]{border:1px solid #cbd5e1}
+button{background:#2563eb;color:#fff;border:0;cursor:pointer}
+</style>
+</head>
+<body>
+<h3>一个最简单的表单</h3><form method="get">
+    <label>你的名字：
+        <input type="text" name="name" value="小明">
+    </label>
+    <button type="submit">提交</button>
+</form>
+<p>你好，<strong>小明</strong>！这句话就是读取 <code>$_GET['name']</code> 之后输出的。</p>
+<p class="box">把用户输入的内容打印到页面前，一定要先用 <code>htmlspecialchars()</code> 转义。
+否则别人可以往输入框里填一段 &lt;script&gt; 之类的代码，让它在别人的浏览器里执行。</p>
+</body>
+</html>

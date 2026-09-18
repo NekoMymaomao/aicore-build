@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>09 语义化标签 · HTML 基础教程</title>
+<title>04 链接 · HTML 基础教程</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; padding: 20px; background: #f5f7fb; color: #1f2430;
@@ -34,58 +34,48 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>09 · 语义化标签</h1>
-  <p class="lead">这些标签的外观和普通容器差不多，但名字本身就在说明「这块内容是什么用途」。</p>
+  <h1>04 · 链接</h1>
+  <p class="lead">链接是网页之间互相连通的通道，靠 <code>&lt;a&gt;</code> 标签和它的 <code>href</code> 属性实现。</p>
 
   <section class="points">
     <h2>知识点</h2>
     <ul>
-      <li><code>&lt;header&gt;</code> 页头，<code>&lt;footer&gt;</code> 页脚，<code>&lt;nav&gt;</code> 导航。</li>
-      <li><code>&lt;main&gt;</code> 放页面主体内容，一个页面通常只出现一次。</li>
-      <li><code>&lt;article&gt;</code> 是一篇能独立成立的内容，<code>&lt;section&gt;</code> 是主题相关的一组内容。</li>
-      <li>用语义标签代替一堆 <code>div</code>，代码更好读，搜索引擎和读屏软件也更容易理解页面结构。</li>
+      <li><code>href</code> 是要跳转的地址，写在开始标签里，这种写法叫「属性」，格式为 <code>名字="值"</code>。</li>
+      <li>加 <code>target="_blank"</code> 会在新标签页打开。搭配 <code>rel="noopener"</code> 更安全。</li>
+      <li>地址以 <code>#</code> 开头是「页内锚点」，跳到本页中 <code>id</code> 同名的元素处。</li>
+      <li>链接文字要写清楚去哪，别用「点这里」这类看不出目的的文字。</li>
     </ul>
   </section>
 
   <section class="demo">
     <div class="code-box">
       <div class="code-head">
-        <span>semantic.html</span>
+        <span>links.html</span>
         <span class="spacer"></span>
         <button class="btn btn-run">运行</button>
         <button class="btn btn-reset">重置</button>
         <button class="btn btn-copy">复制</button>
       </div>
-<textarea class="code" spellcheck="false">&lt;body style="font-family: sans-serif; margin: 0"&gt;
-  &lt;header style="background: #eef2ff; padding: 12px 16px"&gt;
-    &lt;h1 style="margin: 0"&gt;我的博客&lt;/h1&gt;
-    &lt;nav&gt;
-      &lt;a href="#"&gt;首页&lt;/a&gt; ·
-      &lt;a href="#"&gt;归档&lt;/a&gt; ·
-      &lt;a href="#"&gt;关于&lt;/a&gt;
-    &lt;/nav&gt;
-  &lt;/header&gt;
+<textarea class="code" spellcheck="false">&lt;p&gt;普通链接：&lt;a href="https://developer.mozilla.org/zh-CN/"&gt;MDN 前端文档&lt;/a&gt;&lt;/p&gt;
 
-  &lt;main style="padding: 16px"&gt;
-    &lt;article style="border: 1px solid #ddd; border-radius: 8px; padding: 12px"&gt;
-      &lt;h2 style="margin-top: 0"&gt;第一篇笔记&lt;/h2&gt;
-      &lt;p&gt;语义化标签让结构一目了然。&lt;/p&gt;
-    &lt;/article&gt;
-  &lt;/main&gt;
+&lt;p&gt;新标签页打开：&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;example.com&lt;/a&gt;&lt;/p&gt;
 
-  &lt;footer style="padding: 16px; color: #888"&gt;© 2026 我的博客&lt;/footer&gt;
-&lt;/body&gt;</textarea>
+&lt;p&gt;页内跳转：&lt;a href="#bottom"&gt;跳到本页底部&lt;/a&gt;&lt;/p&gt;
+
+&lt;div style="height: 180px"&gt;&lt;/div&gt;
+
+&lt;p id="bottom"&gt;这里是页面底部，上面的锚点链接会跳到这里。&lt;/p&gt;</textarea>
     </div>
     <div class="preview-box">
-      <div class="preview-head">预览 · 效果朴素，价值在于结构清楚</div>
-      <iframe title="演示" style="min-height: 320px"></iframe>
+      <div class="preview-head">预览 · 点链接试试看（演示框里滚动一下就能看到跳转效果）</div>
+      <iframe title="演示" style="min-height: 260px"></iframe>
     </div>
   </section>
 
   <nav class="pager">
-    <a href="08-forms.html">← 上一课</a>
-    <a href="../index.html">返回目录</a>
-    <a href="10-div-span.html">下一课 →</a>
+    <a href="03-text.html">← 上一课</a>
+    <a href="../../index.html">返回目录</a>
+    <a href="05-images.html">下一课 →</a>
   </nav>
 </div>
 

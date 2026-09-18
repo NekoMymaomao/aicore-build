@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>02 标题与段落 · HTML 基础教程</title>
+<title>03 文本格式化 · HTML 基础教程</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; padding: 20px; background: #f5f7fb; color: #1f2430;
@@ -34,36 +34,37 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>02 · 标题与段落</h1>
-  <p class="lead">标题用来划分章节，段落用来承载正文。它们都是块级元素，各占一行。</p>
+  <h1>03 · 文本格式化</h1>
+  <p class="lead">给文字加上强调、划线等效果，用的都是「行内标签」——它们只影响自己包裹的那几个字，不会另起一行。</p>
 
   <section class="points">
     <h2>知识点</h2>
     <ul>
-      <li>标题共六级：<code>&lt;h1&gt;</code> 到 <code>&lt;h6&gt;</code>，字号依次变小，<code>h1</code> 最重要。</li>
-      <li>一个页面通常只用一个 <code>h1</code>，再用 <code>h2</code>、<code>h3</code> 逐层往下排，形成清晰的层级。</li>
-      <li><code>&lt;p&gt;</code> 表示一个段落，浏览器会自动在段落之间留出空白。</li>
-      <li>在源代码里换行或敲多个空格，浏览器都会合并成一个空格——排版由标签决定，不由敲回车决定。</li>
+      <li><code>&lt;strong&gt;</code> 加粗表示重要，<code>&lt;em&gt;</code> 倾斜表示强调。</li>
+      <li><code>&lt;mark&gt;</code> 高亮，<code>&lt;small&gt;</code> 小字，<code>&lt;del&gt;</code> 删除线，<code>&lt;ins&gt;</code> 下划线。</li>
+      <li><code>&lt;br&gt;</code> 强制换行；<code>&lt;hr&gt;</code> 画一条水平分割线，表示话题转换。</li>
+      <li>标签一般成对出现：<code>&lt;strong&gt;内容&lt;/strong&gt;</code>。开头的叫开始标签，带斜杠的叫结束标签。</li>
+      <li><code>br</code> 和 <code>hr</code> 没有内容，是「空元素」，写一个标签就够了。</li>
     </ul>
   </section>
 
   <section class="demo">
     <div class="code-box">
       <div class="code-head">
-        <span>headings.html</span>
+        <span>text.html</span>
         <span class="spacer"></span>
         <button class="btn btn-run">运行</button>
         <button class="btn btn-reset">重置</button>
         <button class="btn btn-copy">复制</button>
       </div>
-<textarea class="code" spellcheck="false">&lt;h1&gt;一级标题&lt;/h1&gt;
-&lt;h2&gt;二级标题&lt;/h2&gt;
-&lt;h3&gt;三级标题&lt;/h3&gt;
-&lt;h4&gt;四级标题&lt;/h4&gt;
+<textarea class="code" spellcheck="false">&lt;p&gt;&lt;strong&gt;加粗&lt;/strong&gt;、&lt;em&gt;倾斜&lt;/em&gt;、&lt;mark&gt;高亮&lt;/mark&gt;、&lt;small&gt;小字&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;原价 99 元&lt;/del&gt; 现价 &lt;ins&gt;59 元&lt;/ins&gt;&lt;/p&gt;
 
-&lt;p&gt;这是一个段落，用来放正文内容。&lt;/p&gt;
-&lt;p&gt;这是第二个段落。虽然源码里我  打了   很多空格，
-但浏览器会把它们缩成一个空格。&lt;/p&gt;</textarea>
+&lt;p&gt;第一行&lt;br&gt;第二行（br 换行，不会产生段落间距）&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;hr 画出了上面的那条横线。&lt;/p&gt;</textarea>
     </div>
     <div class="preview-box">
       <div class="preview-head">预览 · 上方代码渲染出来的效果</div>
@@ -72,9 +73,9 @@
   </section>
 
   <nav class="pager">
-    <a href="01-document.html">← 上一课</a>
-    <a href="../index.html">返回目录</a>
-    <a href="03-text.html">下一课 →</a>
+    <a href="02-headings.html">← 上一课</a>
+    <a href="../../index.html">返回目录</a>
+    <a href="04-links.html">下一课 →</a>
   </nav>
 </div>
 

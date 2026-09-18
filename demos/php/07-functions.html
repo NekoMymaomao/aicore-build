@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>07 函数 · PHP 基础教程</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: #f5f7fb; color: #1f2430;
+         font: 16px/1.7 system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  a { color: #2563eb; }
+  h1 { font-size: 24px; margin: 18px 0 6px; }
+  .lead { margin: 0 0 18px; color: #5b6472; }
+  .points { background: #fff; border: 1px solid #e3e7ef; border-radius: 10px; padding: 6px 20px 14px; margin: 0 0 18px; }
+  .points h2 { font-size: 15px; color: #7c3aed; margin: 14px 0 6px; }
+  .points ul { margin: 0; padding-left: 20px; }
+  .points li { margin: 4px 0; }
+  code { background: #eef2ff; color: #3730a3; padding: 1px 5px; border-radius: 4px; font-size: 14px; }
+  .code-box { background: #1e2333; border-radius: 10px; overflow: hidden; }
+  .code-head { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: #171b28; color: #9aa4c0; font-size: 13px; }
+  .code-head .spacer { flex: 1; }
+  .btn { background: #2c3350; color: #dfe4f2; border: 0; border-radius: 6px; padding: 5px 10px; font-size: 13px; cursor: pointer; }
+  .btn:hover { background: #3a4468; }
+  textarea.code { display: block; width: 100%; border: 0; outline: none; resize: vertical;
+                  background: transparent; color: #e6e9f2; padding: 14px; min-height: 110px;
+                  font: 13.5px/1.6 ui-monospace, Consolas, "Courier New", monospace; }
+  .preview-box { background: #fff; border: 1px solid #e3e7ef; border-radius: 10px; margin-top: 14px; overflow: hidden; }
+  .preview-head { padding: 8px 12px; border-bottom: 1px solid #eef1f6; color: #6b7280; font-size: 13px; }
+  iframe { display: block; width: 100%; border: 0; min-height: 220px; }
+  .pager { display: flex; justify-content: space-between; gap: 10px; margin: 26px 0 6px; font-size: 14px; }
+  .pager .off { color: #9aa4c0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>07 · 函数</h1>
+  <p class="lead">把一段常用逻辑包成函数，起个名字，以后一行就能调用它。</p>
+
+  <section class="points">
+    <h2>知识点</h2>
+    <ul>
+      <li>定义：<code>function 名字(参数) { ... return 结果; }</code>。</li>
+      <li>参数可以有默认值，例如 <code>function greet($name, $greeting = "你好")</code>；调用时省略就使用默认值。</li>
+      <li><code>return</code> 把结果交回给调用处，并立刻结束函数。没写 <code>return</code> 就返回 <code>null</code>。</li>
+      <li>函数内部定义的变量不会影响外面，这叫<strong>作用域</strong>；要在函数里改外面的变量得用 <code>global</code> 或参数传递。</li>
+      <li>PHP 自带大量内置函数（<code>max()</code>、<code>array_sum()</code>、<code>sqrt()</code>、<code>round()</code>…），用法和自己写的函数一样。</li>
+      <li>示例里 <code>"{$greeting}，{$name}！"</code> 用了花括号：变量后面紧跟中文时这样写才不会被误读（详见第 2 课）。</li>
+    </ul>
+  </section>
+
+  <section class="demo">
+    <div class="code-box">
+      <div class="code-head">
+        <span>examples/07-functions.php</span>
+        <span class="spacer"></span>
+        <button class="btn btn-reload">重新加载</button>
+        <button class="btn btn-copy">复制</button>
+      </div>
+      <textarea class="code" readonly spellcheck="false" data-source="examples/07-functions.php">&lt;?php
+// function 定义函数：给它参数，它用 return 交回结果
+function greet($name, $greeting = &quot;你好&quot;)
+{
+    // 变量后面紧跟着中文标点，要用 {$变量} 包起来，否则标点会被当成变量名的一部分
+    return &quot;{$greeting}，{$name}！&quot;;
+}
+
+// 调用函数
+echo &quot;&lt;h3&gt;自定义函数&lt;/h3&gt;&quot;;
+echo &quot;&lt;p&gt;&quot; . greet(&quot;小明&quot;) . &quot;&lt;/p&gt;&quot;;
+echo &quot;&lt;p&gt;&quot; . greet(&quot;小红&quot;, &quot;早上好&quot;) . &quot;&lt;/p&gt;&quot;;
+
+// 参数可以参与运算
+function add($a, $b)
+{
+    return $a + $b;
+}
+
+echo &quot;&lt;p&gt;add(3, 5) = &lt;strong&gt;&quot; . add(3, 5) . &quot;&lt;/strong&gt;&lt;/p&gt;&quot;;
+
+// 函数内部定义变量不会影响外面，这叫作用域
+$counter = 100;
+function tryToChange()
+{
+    $counter = 0;   // 这个 $counter 只活在函数里面
+    return &quot;函数里的 $counter = {$counter}&quot;;
+}
+echo &quot;&lt;p&gt;&quot; . tryToChange() . &quot;，外面的 $counter 仍然是 {$counter}。&lt;/p&gt;&quot;;
+
+echo &quot;&lt;h3&gt;内置函数也是同样的用法&lt;/h3&gt;&quot;;
+$nums = [4, 9, 16, 25];
+echo &quot;&lt;ul&gt;&quot;;
+echo &quot;&lt;li&gt;最大值 max：&quot; . max($nums) . &quot;&lt;/li&gt;&quot;;
+echo &quot;&lt;li&gt;最小值 min：&quot; . min($nums) . &quot;&lt;/li&gt;&quot;;
+echo &quot;&lt;li&gt;求和 array_sum：&quot; . array_sum($nums) . &quot;&lt;/li&gt;&quot;;
+echo &quot;&lt;li&gt;平方根 sqrt(81)：&quot; . sqrt(81) . &quot;&lt;/li&gt;&quot;;
+echo &quot;&lt;li&gt;四舍五入 round(3.14159, 2)：&quot; . round(3.14159, 2) . &quot;&lt;/li&gt;&quot;;
+echo &quot;&lt;/ul&gt;&quot;;</textarea>
+    </div>
+    <div class="preview-box">
+      <div class="preview-head">预览 · 服务器真实执行这段代码后的输出</div>
+      <iframe src="snapshots/07-functions.html" data-preview="snapshots/07-functions.html" style="min-height: 380px" title="演示"></iframe>
+    </div>
+  </section>
+
+  <nav class="pager">
+    <a href="06-loops.html">← 上一课</a>
+    <a href="../../index.html">返回目录</a>
+    <a href="08-forms.html">下一课 →</a>
+  </nav>
+</div>
+
+<script>
+  document.querySelectorAll('.demo').forEach(function (box) {
+    var ta = box.querySelector('textarea.code');
+    var frame = box.querySelector('iframe');
+
+    box.querySelector('.btn-reload').onclick = function () {
+      frame.src = frame.getAttribute('data-preview');
+    };
+    box.querySelector('.btn-copy').onclick = function () {
+      ta.focus();
+      ta.select();
+      document.execCommand('copy');
+      ta.setSelectionRange(0, 0);
+      var btn = this;
+      btn.textContent = '已复制';
+      setTimeout(function () { btn.textContent = '复制'; }, 1200);
+    };
+  });
+</script>
+</body>
+</html>

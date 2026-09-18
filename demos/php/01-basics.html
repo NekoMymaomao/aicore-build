@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>01 文档基本结构 · HTML 基础教程</title>
+<title>01 第一个 PHP 程序 · PHP 基础教程</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; padding: 20px; background: #f5f7fb; color: #1f2430;
@@ -13,7 +13,7 @@
   h1 { font-size: 24px; margin: 18px 0 6px; }
   .lead { margin: 0 0 18px; color: #5b6472; }
   .points { background: #fff; border: 1px solid #e3e7ef; border-radius: 10px; padding: 6px 20px 14px; margin: 0 0 18px; }
-  .points h2 { font-size: 15px; color: #2563eb; margin: 14px 0 6px; }
+  .points h2 { font-size: 15px; color: #7c3aed; margin: 14px 0 6px; }
   .points ul { margin: 0; padding-left: 20px; }
   .points li { margin: 4px 0; }
   code { background: #eef2ff; color: #3730a3; padding: 1px 5px; border-radius: 4px; font-size: 14px; }
@@ -27,80 +27,71 @@
                   font: 13.5px/1.6 ui-monospace, Consolas, "Courier New", monospace; }
   .preview-box { background: #fff; border: 1px solid #e3e7ef; border-radius: 10px; margin-top: 14px; overflow: hidden; }
   .preview-head { padding: 8px 12px; border-bottom: 1px solid #eef1f6; color: #6b7280; font-size: 13px; }
-  iframe { display: block; width: 100%; border: 0; min-height: 180px; }
+  iframe { display: block; width: 100%; border: 0; min-height: 220px; }
   .pager { display: flex; justify-content: space-between; gap: 10px; margin: 26px 0 6px; font-size: 14px; }
   .pager .off { color: #9aa4c0; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>01 · 文档基本结构</h1>
-  <p class="lead">每个网页都是一份 HTML 文档，它由固定的几个部分搭成骨架。</p>
+  <h1>01 · 第一个 PHP 程序</h1>
+  <p class="lead">PHP 是运行在<strong>服务器上</strong>的脚本语言：它先执行一遍，把生成的 HTML 发给浏览器。</p>
 
   <section class="points">
     <h2>知识点</h2>
     <ul>
-      <li><code>&lt;!DOCTYPE html&gt;</code> 写在第一行，告诉浏览器「这是一份 HTML5 文档」。</li>
-      <li><code>&lt;html&gt;</code> 是根元素，包住整份文档；<code>lang="zh-CN"</code> 说明页面语言是简体中文。</li>
-      <li><code>&lt;head&gt;</code> 里的内容<strong>不会</strong>显示在页面上，用来放说明信息：<code>charset</code> 声明编码，<code>title</code> 是浏览器标签页上的标题。</li>
-      <li><code>&lt;body&gt;</code> 里的内容才是真正显示给用户看的。</li>
+      <li>PHP 代码写在 <code>&lt;?php</code> 和 <code>?&gt;</code> 之间，文件后缀是 <code>.php</code>。</li>
+      <li><code>echo</code> 用来输出内容——输出什么，浏览器就显示什么。</li>
+      <li>PHP 可以和 HTML 混排：标签外面的部分是普通 HTML，标签里面的部分交给服务器执行。</li>
+      <li>浏览器拿到的是<strong>执行结果</strong>，看不到 PHP 源码。这就是 PHP 必须放在服务器上跑的原因。</li>
+      <li>下面预览框里的内容，就是这段代码真实执行后的输出。</li>
     </ul>
   </section>
 
   <section class="demo">
     <div class="code-box">
       <div class="code-head">
-        <span>index.html</span>
+        <span>examples/01-basics.php</span>
         <span class="spacer"></span>
-        <button class="btn btn-run">运行</button>
-        <button class="btn btn-reset">重置</button>
+        <button class="btn btn-reload">重新加载</button>
         <button class="btn btn-copy">复制</button>
       </div>
-<textarea class="code" spellcheck="false">&lt;!DOCTYPE html&gt;
-&lt;html lang="zh-CN"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;我的第一个网页&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;你好，世界！&lt;/h1&gt;
-  &lt;p&gt;这是我用 HTML 写的第一段文字。&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
+      <textarea class="code" readonly spellcheck="false" data-source="examples/01-basics.php">&lt;?php
+// 最简单的 PHP 输出：echo 一段文字
+echo &quot;&lt;h2&gt;你好，PHP！&lt;/h2&gt;&quot;;
+?&gt;
+
+&lt;p&gt;这一行是 PHP 标签外面的普通 HTML，服务器会原样发给浏览器。&lt;/p&gt;
+
+&lt;?php
+// 再回到 PHP 里
+echo &quot;&lt;p&gt;这一行是 echo 输出的。&lt;/p&gt;&quot;;
+?&gt;
+
+&lt;p&gt;两段内容最终会拼成一个完整的页面 —— 浏览器看不到 PHP 代码，只见到了它生成的结果。
+这就是 PHP 和 HTML 最本质的区别：&lt;strong&gt;HTML 直接发给浏览器，PHP 先在服务器上执行一遍&lt;/strong&gt;。&lt;/p&gt;</textarea>
     </div>
     <div class="preview-box">
-      <div class="preview-head">预览 · 上方代码渲染出来的效果</div>
-      <iframe title="演示"></iframe>
+      <div class="preview-head">预览 · 服务器真实执行这段代码后的输出</div>
+      <iframe src="snapshots/01-basics.html" data-preview="snapshots/01-basics.html" style="min-height: 240px" title="演示"></iframe>
     </div>
   </section>
 
   <nav class="pager">
     <span class="off">← 上一课</span>
-    <a href="../index.html">返回目录</a>
-    <a href="02-headings.html">下一课 →</a>
+    <a href="../../index.html">返回目录</a>
+    <a href="02-variables.html">下一课 →</a>
   </nav>
 </div>
 
 <script>
-  // 代码框与预览框联动：修改代码后点「运行」重新渲染
-  function runDemo(box) {
-    var ta = box.querySelector('textarea.code');
-    var frame = box.querySelector('iframe');
-    var code = ta.value.trim();
-    // 若只是一段片段，就自动包上完整文档结构，保证能独立渲染
-    frame.srcdoc = /<!doctype|<html[\s>]/i.test(code)
-      ? code
-      : '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">' +
-        '<style>body{margin:0;padding:14px;font:16px/1.6 system-ui,"PingFang SC","Microsoft YaHei",sans-serif;color:#1f2430}</style>' +
-        '</head><body>' + code + '</body></html>';
-  }
-
   document.querySelectorAll('.demo').forEach(function (box) {
     var ta = box.querySelector('textarea.code');
-    var first = ta.value;
+    var frame = box.querySelector('iframe');
 
-    box.querySelector('.btn-run').onclick = function () { runDemo(box); };
-    box.querySelector('.btn-reset').onclick = function () { ta.value = first; runDemo(box); };
+    box.querySelector('.btn-reload').onclick = function () {
+      frame.src = frame.getAttribute('data-preview');
+    };
     box.querySelector('.btn-copy').onclick = function () {
       ta.focus();
       ta.select();
@@ -110,11 +101,6 @@
       btn.textContent = '已复制';
       setTimeout(function () { btn.textContent = '复制'; }, 1200);
     };
-    ta.addEventListener('keydown', function (e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') runDemo(box);
-    });
-
-    runDemo(box);
   });
 </script>
 </body>

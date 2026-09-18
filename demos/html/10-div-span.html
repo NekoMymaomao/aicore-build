@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>08 表单 · HTML 基础教程</title>
+<title>10 块级与行内 · HTML 基础教程</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; padding: 20px; background: #f5f7fb; color: #1f2430;
@@ -34,77 +34,53 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>08 · 表单</h1>
-  <p class="lead">表单是网页收集用户输入的地方：输入框、单选框、下拉菜单都属于它。</p>
+  <h1>10 · 块级与行内</h1>
+  <p class="lead">前面见过的标签其实分成两大类，这个区别决定它们怎么在页面上排列。</p>
 
   <section class="points">
     <h2>知识点</h2>
     <ul>
-      <li><code>&lt;form&gt;</code> 包住整张表单；<code>&lt;input&gt;</code> 是最常用的输入控件，靠 <code>type</code> 决定形态（<code>text</code> 文本、<code>password</code> 密码、<code>radio</code> 单选、<code>checkbox</code> 多选）。</li>
-      <li><code>&lt;label&gt;</code> 是控件的说明文字。用 <code>for</code> 指向控件的 <code>id</code> 后，点文字也能选中控件。</li>
-      <li>单选按钮要分成一组时，必须给它们相同的 <code>name</code>，同一组里只能选一个。</li>
-      <li><code>&lt;select&gt;</code> 配 <code>&lt;option&gt;</code> 做下拉菜单；<code>&lt;textarea&gt;</code> 做多行文本。</li>
-      <li><code>placeholder</code> 是灰字提示，<code>value</code> 是真正的初始值——两者不要混淆。</li>
+      <li><strong>块级元素</strong>（如 <code>h1</code>、<code>p</code>、<code>div</code>）独占一行，宽度默认撑满父容器。可以理解为「一整个盒子」。</li>
+      <li><strong>行内元素</strong>（如 <code>span</code>、<code>a</code>、<code>strong</code>）只占文字那么宽，一行可以并排多个。</li>
+      <li><code>&lt;div&gt;</code> 是无语义的块级容器，<code>&lt;span&gt;</code> 是无语义的行内容器，都用来「圈住一块内容」以便布局或加样式。</li>
+      <li>用 <code>style</code> 属性可以直接给元素加样式，例如 <code>style="color: red"</code>，这叫行内样式。</li>
     </ul>
   </section>
 
   <section class="demo">
     <div class="code-box">
       <div class="code-head">
-        <span>forms.html</span>
+        <span>div-span.html</span>
         <span class="spacer"></span>
         <button class="btn btn-run">运行</button>
         <button class="btn btn-reset">重置</button>
         <button class="btn btn-copy">复制</button>
       </div>
-<textarea class="code" spellcheck="false">&lt;form&gt;
-  &lt;p&gt;
-    &lt;label for="name"&gt;姓名：&lt;/label&gt;
-    &lt;input id="name" type="text" placeholder="请输入姓名"&gt;
-  &lt;/p&gt;
+<textarea class="code" spellcheck="false">&lt;div style="background: #e0f2fe; padding: 10px; border-radius: 6px"&gt;
+  这是一个 div：它独占一行，像一块可以自由摆放的板子。
+&lt;/div&gt;
 
-  &lt;p&gt;
-    &lt;label for="pwd"&gt;密码：&lt;/label&gt;
-    &lt;input id="pwd" type="password"&gt;
-  &lt;/p&gt;
+&lt;div style="background: #fef3c7; padding: 10px; border-radius: 6px"&gt;
+  第二个 div。两个 div 之间会自动换行。
+&lt;/div&gt;
 
-  &lt;p&gt;
-    性别：
-    &lt;label&gt;&lt;input type="radio" name="gender" checked&gt; 男&lt;/label&gt;
-    &lt;label&gt;&lt;input type="radio" name="gender"&gt; 女&lt;/label&gt;
-  &lt;/p&gt;
-
-  &lt;p&gt;
-    城市：
-    &lt;select&gt;
-      &lt;option&gt;北京&lt;/option&gt;
-      &lt;option&gt;上海&lt;/option&gt;
-      &lt;option&gt;广州&lt;/option&gt;
-    &lt;/select&gt;
-  &lt;/p&gt;
-
-  &lt;p&gt;
-    &lt;label for="msg"&gt;留言：&lt;/label&gt;&lt;br&gt;
-    &lt;textarea id="msg" rows="3" cols="30"&gt;你好！&lt;/textarea&gt;
-  &lt;/p&gt;
-
-  &lt;p&gt;
-    &lt;label&gt;&lt;input type="checkbox"&gt; 我已阅读并同意条款&lt;/label&gt;
-  &lt;/p&gt;
-
-  &lt;p&gt;&lt;button type="button"&gt;提交&lt;/button&gt;&lt;/p&gt;
-&lt;/form&gt;</textarea>
+&lt;p style="margin-top: 20px"&gt;
+  这是一段文字，里面有
+  &lt;span style="color: #e11d48; font-weight: bold"&gt;一个 span&lt;/span&gt;
+  和 &lt;span style="background: #dbeafe"&gt;另一个 span&lt;/span&gt;，
+  它们只是给局部加了样式，并不会换行。
+&lt;/p&gt;</textarea>
     </div>
     <div class="preview-box">
-      <div class="preview-head">预览 · 试着点一点、填一填</div>
-      <iframe title="演示" style="min-height: 480px"></iframe>
+      <div class="preview-head">预览 · 观察 div 换行、span 不换行的区别</div>
+      <iframe title="演示" style="min-height: 300px"></iframe>
     </div>
   </section>
 
   <nav class="pager">
-    <a href="07-tables.html">← 上一课</a>
-    <a href="../index.html">返回目录</a>
-    <a href="09-semantic.html">下一课 →</a>
+    <a href="09-semantic.html">← 上一课</a>
+    <a href="../../index.html">返回目录</a>
+    <span class="off">已是最后一课</span>
   </nav>
 </div>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>10 块级与行内 · HTML 基础教程</title>
+<title>01 文档基本结构 · HTML 基础教程</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; padding: 20px; background: #f5f7fb; color: #1f2430;
@@ -34,53 +34,50 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>10 · 块级与行内</h1>
-  <p class="lead">前面见过的标签其实分成两大类，这个区别决定它们怎么在页面上排列。</p>
+  <h1>01 · 文档基本结构</h1>
+  <p class="lead">每个网页都是一份 HTML 文档，它由固定的几个部分搭成骨架。</p>
 
   <section class="points">
     <h2>知识点</h2>
     <ul>
-      <li><strong>块级元素</strong>（如 <code>h1</code>、<code>p</code>、<code>div</code>）独占一行，宽度默认撑满父容器。可以理解为「一整个盒子」。</li>
-      <li><strong>行内元素</strong>（如 <code>span</code>、<code>a</code>、<code>strong</code>）只占文字那么宽，一行可以并排多个。</li>
-      <li><code>&lt;div&gt;</code> 是无语义的块级容器，<code>&lt;span&gt;</code> 是无语义的行内容器，都用来「圈住一块内容」以便布局或加样式。</li>
-      <li>用 <code>style</code> 属性可以直接给元素加样式，例如 <code>style="color: red"</code>，这叫行内样式。</li>
+      <li><code>&lt;!DOCTYPE html&gt;</code> 写在第一行，告诉浏览器「这是一份 HTML5 文档」。</li>
+      <li><code>&lt;html&gt;</code> 是根元素，包住整份文档；<code>lang="zh-CN"</code> 说明页面语言是简体中文。</li>
+      <li><code>&lt;head&gt;</code> 里的内容<strong>不会</strong>显示在页面上，用来放说明信息：<code>charset</code> 声明编码，<code>title</code> 是浏览器标签页上的标题。</li>
+      <li><code>&lt;body&gt;</code> 里的内容才是真正显示给用户看的。</li>
     </ul>
   </section>
 
   <section class="demo">
     <div class="code-box">
       <div class="code-head">
-        <span>div-span.html</span>
+        <span>index.html</span>
         <span class="spacer"></span>
         <button class="btn btn-run">运行</button>
         <button class="btn btn-reset">重置</button>
         <button class="btn btn-copy">复制</button>
       </div>
-<textarea class="code" spellcheck="false">&lt;div style="background: #e0f2fe; padding: 10px; border-radius: 6px"&gt;
-  这是一个 div：它独占一行，像一块可以自由摆放的板子。
-&lt;/div&gt;
-
-&lt;div style="background: #fef3c7; padding: 10px; border-radius: 6px"&gt;
-  第二个 div。两个 div 之间会自动换行。
-&lt;/div&gt;
-
-&lt;p style="margin-top: 20px"&gt;
-  这是一段文字，里面有
-  &lt;span style="color: #e11d48; font-weight: bold"&gt;一个 span&lt;/span&gt;
-  和 &lt;span style="background: #dbeafe"&gt;另一个 span&lt;/span&gt;，
-  它们只是给局部加了样式，并不会换行。
-&lt;/p&gt;</textarea>
+<textarea class="code" spellcheck="false">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;我的第一个网页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;你好，世界！&lt;/h1&gt;
+  &lt;p&gt;这是我用 HTML 写的第一段文字。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
     </div>
     <div class="preview-box">
-      <div class="preview-head">预览 · 观察 div 换行、span 不换行的区别</div>
-      <iframe title="演示" style="min-height: 300px"></iframe>
+      <div class="preview-head">预览 · 上方代码渲染出来的效果</div>
+      <iframe title="演示"></iframe>
     </div>
   </section>
 
   <nav class="pager">
-    <a href="09-semantic.html">← 上一课</a>
-    <a href="../index.html">返回目录</a>
-    <span class="off">已是最后一课</span>
+    <span class="off">← 上一课</span>
+    <a href="../../index.html">返回目录</a>
+    <a href="02-headings.html">下一课 →</a>
   </nav>
 </div>
 
