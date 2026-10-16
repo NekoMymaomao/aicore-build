@@ -52,7 +52,7 @@
     </ul>
   </section>
 
-  <p class="note">下面用的是仓库里真实的文件：<code>assets/clip.mp4</code>（约 34MB）和 <code>assets/song.mp3</code>。视频设了 <code>preload="metadata"</code>，所以打开这一课不会把整个视频下载下来，只有你点播放时才会开始传输——这也正是「边下边播」的原理。</p>
+  <p class="note">下面用的是仓库里真实的文件：<code>assets/clip.mp4</code>（720p，约 19MB）和 <code>assets/song.mp3</code>。视频设了 <code>preload="metadata"</code>，所以打开这一课不会把整个视频下载下来，只有你点播放时才会开始传输——这也正是「边下边播」的原理。</p>
 
   <section class="demo">
     <div class="code-box">
@@ -86,6 +86,36 @@
     <div class="preview-box">
       <div class="preview-head">预览 · 点播放按钮，视频会边下载边播放</div>
       <iframe title="演示" style="min-height: 720px"></iframe>
+    </div>
+  </section>
+
+  <p class="note">除了本地文件，也可以嵌入外部平台的视频。B 站这类平台不提供可长期直接播放的视频文件地址（直链有防盗链、且会过期），正确做法是用它提供的 iframe 播放器嵌进来。</p>
+
+  <section class="demo">
+    <div class="code-box">
+      <div class="code-head">
+        <span>embed.html</span>
+        <span class="spacer"></span>
+        <button class="btn btn-run">运行</button>
+        <button class="btn btn-reset">重置</button>
+        <button class="btn btn-copy">复制</button>
+      </div>
+<textarea class="code" spellcheck="false">&lt;h3&gt;嵌入 B 站视频&lt;/h3&gt;
+&lt;iframe
+  src="https://player.bilibili.com/player.html?bvid=BV1Ldp46FE9R&amp;cid=42590669756&amp;page=1&amp;high_quality=1&amp;danmaku=0"
+  width="640" height="360"
+  style="border:0;max-width:100%"
+  allowfullscreen="true"&gt;
+&lt;/iframe&gt;
+
+&lt;p style="color:#6b7280;font-size:13px"&gt;
+  用 &lt;iframe&gt; 嵌入外部播放器：视频由对方服务器提供，你只写一个地址。
+  注意开头的 player.bilibili.com 是它专门给嵌入用的播放器域名。
+&lt;/p&gt;</textarea>
+    </div>
+    <div class="preview-box">
+      <div class="preview-head">预览 · 内嵌的 B 站播放器（视频来自外部链接）</div>
+      <iframe title="演示" style="min-height: 420px"></iframe>
     </div>
   </section>
 
