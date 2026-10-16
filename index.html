@@ -3,54 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>网页基础教程</title>
-<style>
-  * { box-sizing: border-box; }
-  body { margin: 0; padding: 40px 20px; background: #f5f7fb; color: #1f2430;
-         font: 16px/1.7 system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
-  .wrap { max-width: 720px; margin: 0 auto; }
-  h1 { font-size: 28px; margin: 0 0 8px; text-align: center; }
-  .hero p { margin: 0 0 34px; color: #5b6472; text-align: center; }
-
-  .tracks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-  .track { display: block; padding: 26px 24px; background: #fff; border: 1px solid #e3e7ef;
-           border-radius: 14px; text-decoration: none; color: inherit; }
-  .track:hover { border-color: #2563eb; box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08); }
-  .track .tag { display: inline-block; padding: 3px 10px; border-radius: 6px;
-                font: 700 12px/1.6 ui-monospace, Consolas, monospace;
-                background: #eef2ff; color: #2563eb; margin-bottom: 12px; }
-  .track.adv .tag { background: #e0e7ff; color: #1d4ed8; }
-  .track strong { display: block; font-size: 19px; margin-bottom: 6px; }
-  .track .note { display: block; color: #6b7280; font-size: 13px; }
-  .track .go { display: block; margin-top: 16px; color: #2563eb; font-size: 14px; font-weight: 600; }
-
-  footer { margin-top: 40px; color: #8a93a5; font-size: 13px; text-align: center; }
-</style>
+<title>教程中心 · 首页</title>
+<link rel="stylesheet" href="tutorials/assets/theme.css">
+<link rel="stylesheet" href="tutorials/assets/tutorial.css">
 </head>
 <body>
+<div class="mi-navbar glass glass--liquid">
+  <span class="mi-chip">首页</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button">深色</button>
+</div>
 <div class="wrap">
-  <header class="hero">
-    <h1>网页基础教程</h1>
-    <p>选一套开始</p>
+  <header class="tut-head" style="text-align:center;margin-top:8vh">
+    <h1 class="mi-title">编程教程中心</h1>
+    <p class="mi-lead">HTML、C、Python、Java、PHP 五套教程，基础与高级并重。</p>
   </header>
 
-  <div class="tracks">
-    <a class="track" href="demos/basic/index.html">
-      <span class="tag">基础</span>
-      <strong>HTML 基础教程</strong>
-      <span class="note">十节课，从零认识网页的骨架：标签、链接、图片、列表、表格、表单。</span>
-      <span class="go">开始学习 →</span>
-    </a>
-
-    <a class="track adv" href="demos/advanced/index.html">
-      <span class="tag">高级</span>
-      <strong>高级 HTML 编程</strong>
-      <span class="note">十节课，把 HTML 用透：表单控件与校验、多媒体、矢量图、画布、可访问性、元数据。</span>
-      <span class="go">开始学习 →</span>
+  <div style="max-width:360px;margin:28px auto 0">
+    <a class="track glass glass--liquid mi-card" href="tutorials/index.html" style="text-align:center">
+      <strong>进入教程中心 →</strong>
+      <span class="note">按语言浏览全部课程</span>
     </a>
   </div>
 
-  <footer>每一课的代码框都可以直接修改，点「运行」即时看到效果。</footer>
+  <div class="track-grid" style="margin-top:26px">
+    <a class="track glass glass--liquid" href="tutorials/html/basic/index.html">
+      <span class="mi-chip">HTML</span>
+      <strong>HTML 基础</strong>
+      <span class="note">网页骨架入门，十节课。</span>
+    </a>
+    <a class="track glass glass--liquid" href="tutorials/html/advanced/index.html">
+      <span class="mi-chip">HTML</span>
+      <strong>高级 HTML</strong>
+      <span class="note">表单、多媒体、画布等十节课。</span>
+    </a>
+  </div>
+
+  <p class="mi-muted" style="text-align:center;margin-top:34px">界面采用 HyperOS 风格与液态/磨砂玻璃材质。</p>
 </div>
+<script src="tutorials/assets/tutorial.js"></script>
 </body>
 </html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDO 数据库操作 · PHP 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← PHP 教程</a>
+  <span class="mi-chip">PHP</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">PHP 教程 · 第 5 课</span></div>
+    <h1 class="mi-title">PDO 数据库操作</h1>
+    <p class="mi-lead">PDO 提供统一的数据库访问接口，预处理语句可防 SQL 注入。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>new PDO(dsn, user, pass)</code> 建立连接，出错抛异常。</li>
+      <li>用 <code>prepare</code> + <code>execute</code> 绑定参数，避免拼接 SQL。</li>
+      <li><code>fetch</code> / <code>fetchAll</code> 取结果。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="php">
+    <div class="code-head">
+      <span class="name">pdo.php</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">&lt;?php
+// 使用内存 SQLite 演示（真实项目换成 MySQL 等）
+try {
+    $pdo = new PDO("sqlite::memory:");
+    $pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $pdo-&gt;exec("CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT)");
+
+    $stmt = $pdo-&gt;prepare("INSERT INTO users (name) VALUES (?)");
+    $stmt-&gt;execute(["小明"]);
+    $stmt-&gt;execute(["小红"]);
+
+    $rows = $pdo-&gt;query("SELECT id, name FROM users")-&gt;fetchAll(PDO::FETCH_ASSOC);
+    foreach ($rows as $r) {
+        echo $r["id"] . ": " . $r["name"] . "\n";
+    }
+} catch (PDOException $e) {
+    echo "数据库错误：" . $e-&gt;getMessage() . "\n";
+}
+?&gt;</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>1: 小明
+2: 小红</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="04-session.html">← 第 4 课</a>
+    <a href="../index.html">目录</a>
+    <a href="06-errors.html">第 6 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

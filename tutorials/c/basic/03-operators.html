@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>运算符与表达式 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">C 语言教程 · 第 3 课</span></div>
+    <h1 class="mi-title">运算符与表达式</h1>
+    <p class="mi-lead">运算符把变量和常量组合成表达式，是控制流的基础。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>算术运算符 <code>+ - * / %</code>；两个整数相除会截断小数部分。</li>
+      <li>比较运算符 <code>== != &gt; &lt; &gt;= &lt;=</code> 结果为 0（假）或 1（真）。</li>
+      <li>逻辑运算符 <code>&amp;&amp;</code> 与、<code>||</code> 或、<code>!</code> 非。</li>
+      <li>自增自减 <code>++</code> <code>--</code>；强制类型转换 <code>(double) a / b</code>。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">operators.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+
+int main(void) {
+    int a = 7, b = 2;
+    printf("整数除法 7 / 2 = %d\n", a / b);
+    printf("浮点除法 7 / 2 = %.2f\n", (double) a / b);
+    printf("取余 7 %% 2 = %d\n", a % b);
+    printf("(a &gt; b) = %d\n", a &gt; b);
+    printf("(a &gt; 0 &amp;&amp; b &gt; 0) = %d\n", a &gt; 0 &amp;&amp; b &gt; 0);
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>整数除法 7 / 2 = 3
+浮点除法 7 / 2 = 3.50
+取余 7 % 2 = 1
+(a &gt; b) = 1
+(a &gt; 0 &amp;&amp; b &gt; 0) = 1</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="02-types.html">← 第 2 课</a>
+    <a href="../index.html">目录</a>
+    <a href="04-control.html">第 4 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

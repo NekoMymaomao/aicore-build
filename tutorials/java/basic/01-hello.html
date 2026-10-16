@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第一个程序与 JDK · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">Java 教程 · 第 1 课</span></div>
+    <h1 class="mi-title">第一个程序与 JDK</h1>
+    <p class="mi-lead">Java 代码先编译成字节码，再由 JVM 运行，因此可跨平台。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>类名必须与文件名一致（<code>Hello</code> 对应 <code>Hello.java</code>）。</li>
+      <li><code>public static void main(String[] args)</code> 是程序入口。</li>
+      <li><code>System.out.println</code> 输出并换行；编译 <code>javac Hello.java</code>，运行 <code>java Hello</code>。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">Hello.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        System.out.println("欢迎学习 Java");
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>Hello, World!
+欢迎学习 Java</pre>
+  </div>
+
+  <nav class="pager">
+    <span class="off">← 上一课</span>
+    <a href="../index.html">目录</a>
+    <a href="02-types.html">第 2 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

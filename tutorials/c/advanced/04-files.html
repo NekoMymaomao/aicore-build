@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文件操作 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">C 语言教程 · 第 4 课</span></div>
+    <h1 class="mi-title">文件操作</h1>
+    <p class="mi-lead">程序可以把数据持久化到文件，也能读取文件内容。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>FILE *</code> 是文件句柄；<code>fopen</code> 打开，<code>fclose</code> 关闭。</li>
+      <li>常用模式：<code>"r"</code> 只读、<code>"w"</code> 覆盖写、<code>"a"</code> 追加。</li>
+      <li>写用 <code>fprintf</code>，读用 <code>fgets</code> / <code>fscanf</code>；操作后要检查返回值。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">files.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+
+int main(void) {
+    // 写入
+    FILE *fp = fopen("data.txt", "w");
+    if (fp == NULL) return 1;
+    fprintf(fp, "第一行\n第二行\n");
+    fclose(fp);
+
+    // 读取
+    char line[100];
+    fp = fopen("data.txt", "r");
+    if (fp == NULL) return 1;
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        printf("%s", line);
+    }
+    fclose(fp);
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>第一行
+第二行</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="03-structs.html">← 第 3 课</a>
+    <a href="../index.html">目录</a>
+    <a href="05-preprocess.html">第 5 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

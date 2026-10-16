@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>变量与数据类型 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">C 语言教程 · 第 2 课</span></div>
+    <h1 class="mi-title">变量与数据类型</h1>
+    <p class="mi-lead">变量是存放数据的容器，使用前必须先声明类型，类型决定取值范围与内存占用。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>int</code> 整数、<code>double</code> 双精度浮点、<code>char</code> 单个字符。</li>
+      <li>格式化占位符：<code>%d</code> 整数、<code>%.2f</code> 保留两位小数、<code>%c</code> 字符、<code>%s</code> 字符串。</li>
+      <li><code>sizeof</code> 返回类型或变量占用的字节数（<code>size_t</code> 用 <code>%zu</code> 打印）。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">types.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+
+int main(void) {
+    int age = 18;
+    double height = 1.75;
+    char grade = 'A';
+
+    printf("年龄：%d 岁\n", age);
+    printf("身高：%.2f 米\n", height);
+    printf("等级：%c\n", grade);
+    printf("int 占用 %zu 字节\n", sizeof(int));
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>年龄：18 岁
+身高：1.75 米
+等级：A
+int 占用 4 字节</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="01-hello.html">← 第 1 课</a>
+    <a href="../index.html">目录</a>
+    <a href="03-operators.html">第 3 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>变量与数据类型 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">Java 教程 · 第 2 课</span></div>
+    <h1 class="mi-title">变量与数据类型</h1>
+    <p class="mi-lead">Java 是静态类型语言，变量必须先声明类型。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>八种基本类型：<code>int</code> <code>long</code> <code>double</code> <code>float</code> <code>boolean</code> <code>char</code> <code>byte</code> <code>short</code>。</li>
+      <li><code>String</code> 是引用类型，用双引号表示。</li>
+      <li>字符串拼接用 <code>+</code>；<code>final</code> 定义常量。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">Types.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">public class Types {
+    public static void main(String[] args) {
+        int age = 18;
+        double height = 1.75;
+        boolean isStudent = true;
+        String name = "小明";
+        final int MAX = 100;
+
+        System.out.println(name + " 今年 " + age + " 岁");
+        System.out.println("身高：" + height);
+        System.out.println("是否学生：" + isStudent);
+        System.out.println("上限：" + MAX);
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>小明 今年 18 岁
+身高：1.75
+是否学生：true
+上限：100</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="01-hello.html">← 第 1 课</a>
+    <a href="../index.html">目录</a>
+    <a href="03-operators.html">第 3 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

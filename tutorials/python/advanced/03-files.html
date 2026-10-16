@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文件与上下文管理器 · Python 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Python 教程</a>
+  <span class="mi-chip">Python</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Python 教程 · 第 3 课</span></div>
+    <h1 class="mi-title">文件与上下文管理器</h1>
+    <p class="mi-lead">with 语句自动管理资源，确保文件用完后被正确关闭。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>with open(...) as f</code> 打开文件，退出代码块自动关闭。</li>
+      <li>模式：<code>"r"</code> 读、<code>"w"</code> 写、<code>"a"</code> 追加。</li>
+      <li><code>read()</code> / <code>readlines()</code> / <code>write()</code> 读写内容。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="python">
+    <div class="code-head">
+      <span class="name">files.py</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-run" type="button">运行</button>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">with open("demo.txt", "w", encoding="utf-8") as f:
+    f.write("第一行\n第二行\n")
+
+with open("demo.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print(line.rstrip())
+
+# 自定义上下文管理器
+class Timer:
+    def __enter__(self):
+        print("开始")
+        return self
+    def __exit__(self, *args):
+        print("结束")
+
+with Timer():
+    print("处理中")</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果 · 点击上方「运行」即时执行</div>
+    <pre></pre>
+  </div>
+
+  <nav class="pager">
+    <a href="02-exceptions.html">← 第 2 课</a>
+    <a href="../index.html">目录</a>
+    <a href="04-modules.html">第 4 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+<script src="../../assets/python.js"></script>
+</body>
+</html>

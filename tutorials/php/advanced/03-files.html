@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>文件与目录 · PHP 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← PHP 教程</a>
+  <span class="mi-chip">PHP</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">PHP 教程 · 第 3 课</span></div>
+    <h1 class="mi-title">文件与目录</h1>
+    <p class="mi-lead">PHP 可以读写文件、遍历目录，常用于日志和配置处理。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>file_put_contents</code> 一步写入，<code>file_get_contents</code> 一步读取。</li>
+      <li><code>fopen</code> / <code>fgets</code> / <code>fclose</code> 逐行处理大文件。</li>
+      <li><code>scandir</code> / <code>glob</code> 列出目录内容。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="php">
+    <div class="code-head">
+      <span class="name">files.php</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">&lt;?php
+$file = "demo.txt";
+file_put_contents($file, "第一行\n第二行\n");
+
+$content = file_get_contents($file);
+echo $content;
+
+if (($fh = fopen($file, "r")) !== false) {
+    while (($line = fgets($fh)) !== false) {
+        echo "读取：" . trim($line) . "\n";
+    }
+    fclose($fh);
+}
+
+echo "文件存在：" . (file_exists($file) ? "是" : "否") . "\n";
+?&gt;</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>第一行
+第二行
+读取：第一行
+读取：第二行
+文件存在：是</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="02-strings.html">← 第 2 课</a>
+    <a href="../index.html">目录</a>
+    <a href="04-session.html">第 4 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

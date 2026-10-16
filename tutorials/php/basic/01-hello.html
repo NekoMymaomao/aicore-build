@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第一个 PHP 程序 · PHP 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← PHP 教程</a>
+  <span class="mi-chip">PHP</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">PHP 教程 · 第 1 课</span></div>
+    <h1 class="mi-title">第一个 PHP 程序</h1>
+    <p class="mi-lead">PHP 是嵌入在网页中的服务端脚本语言，由服务器执行后输出 HTML。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>PHP 代码写在 <code>&lt;?php ... ?&gt;</code> 之间。</li>
+      <li><code>echo</code> / <code>print</code> 输出内容。</li>
+      <li>语句以分号结尾；运行：<code>php hello.php</code>。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="php">
+    <div class="code-head">
+      <span class="name">hello.php</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">&lt;?php
+// 第一个 PHP 程序
+echo "Hello, World!\n";
+echo "欢迎学习 PHP\n";
+
+$name = "小明";
+echo "你好，" . $name . "！\n";
+?&gt;</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>Hello, World!
+欢迎学习 PHP
+你好，小明！</pre>
+  </div>
+
+  <nav class="pager">
+    <span class="off">← 上一课</span>
+    <a href="../index.html">目录</a>
+    <a href="02-types.html">第 2 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

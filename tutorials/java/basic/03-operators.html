@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>运算符与控制流 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">Java 教程 · 第 3 课</span></div>
+    <h1 class="mi-title">运算符与控制流</h1>
+    <p class="mi-lead">运算符和流程控制构成程序的逻辑骨架。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>算术、比较、逻辑运算符与 C 类似；<code>&&</code> <code>||</code> 短路求值。</li>
+      <li><code>if / else if / else</code>、<code>switch</code>、<code>for</code>、<code>while</code>。</li>
+      <li>增强 for 循环 <code>for (int x : arr)</code> 遍历数组或集合。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">Control.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">public class Control {
+    public static void main(String[] args) {
+        int score = 86;
+        if (score &gt;= 90) {
+            System.out.println("优秀");
+        } else if (score &gt;= 60) {
+            System.out.println("及格");
+        } else {
+            System.out.println("不及格");
+        }
+
+        int sum = 0;
+        for (int i = 1; i &lt;= 5; i++) {
+            sum += i;
+        }
+        System.out.println("1+2+3+4+5 = " + sum);
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>及格
+1+2+3+4+5 = 15</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="02-types.html">← 第 2 课</a>
+    <a href="../index.html">目录</a>
+    <a href="04-arrays-strings.html">第 4 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

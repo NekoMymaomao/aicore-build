@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>装饰器与生成器 · Python 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Python 教程</a>
+  <span class="mi-chip">Python</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Python 教程 · 第 5 课</span></div>
+    <h1 class="mi-title">装饰器与生成器</h1>
+    <p class="mi-lead">装饰器在不改动原函数的前提下增强功能；生成器惰性产出序列。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>装饰器是接收函数、返回新函数的函数，用 <code>@</code> 语法应用。</li>
+      <li><code>functools.wraps</code> 保留原函数的元信息。</li>
+      <li><code>yield</code> 让函数变成生成器，按需产出值，省内存。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="python">
+    <div class="code-head">
+      <span class="name">decorators.py</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-run" type="button">运行</button>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">from functools import wraps
+
+def log(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print("调用：", func.__name__)
+        return func(*args, **kwargs)
+    return wrapper
+
+@log
+def add(a, b):
+    return a + b
+
+print("结果：", add(3, 4))
+
+def countdown(n):
+    while n &gt; 0:
+        yield n
+        n -= 1
+
+print(list(countdown(5)))</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果 · 点击上方「运行」即时执行</div>
+    <pre></pre>
+  </div>
+
+  <nav class="pager">
+    <a href="04-modules.html">← 第 4 课</a>
+    <a href="../index.html">目录</a>
+    <a href="06-stdlib.html">第 6 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+<script src="../../assets/python.js"></script>
+</body>
+</html>

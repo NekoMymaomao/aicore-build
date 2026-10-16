@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>泛型 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Java 教程 · 第 5 课</span></div>
+    <h1 class="mi-title">泛型</h1>
+    <p class="mi-lead">泛型让类型作为参数，提供编译期类型安全。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>class Box&lt;T&gt;</code> 定义类型参数。</li>
+      <li>泛型方法：<code>&lt;T&gt; T identity(T x)</code>。</li>
+      <li>通配符 <code>?</code> 与 <code>? extends / super</code> 用于灵活匹配。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">Generics.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">class Box&lt;T&gt; {
+    private T value;
+    Box(T value) { this.value = value; }
+    T get() { return value; }
+}
+
+public class Generics {
+    static &lt;T&gt; void printAll(T[] arr) {
+        for (T x : arr) {
+            System.out.print(x + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Box&lt;String&gt; b = new Box&lt;&gt;("你好");
+        System.out.println(b.get());
+
+        Integer[] nums = {1, 2, 3};
+        printAll(nums);
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>你好
+1 2 3</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="04-exceptions.html">← 第 4 课</a>
+    <a href="../index.html">目录</a>
+    <a href="06-threads.html">第 6 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

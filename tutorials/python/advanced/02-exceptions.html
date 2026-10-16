@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>异常处理 · Python 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Python 教程</a>
+  <span class="mi-chip">Python</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Python 教程 · 第 2 课</span></div>
+    <h1 class="mi-title">异常处理</h1>
+    <p class="mi-lead">异常让程序在出错时可控地处理问题，而不是直接崩溃。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>try / except / else / finally</code> 控制错误处理流程。</li>
+      <li>捕获具体异常类型更精确；<code>raise</code> 主动抛出异常。</li>
+      <li>自定义异常通过继承 <code>Exception</code> 实现。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="python">
+    <div class="code-head">
+      <span class="name">exceptions.py</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-run" type="button">运行</button>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">def safe_div(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return "除数不能为 0"
+    finally:
+        print("计算完成")
+
+print(safe_div(10, 2))
+print(safe_div(10, 0))
+
+try:
+    age = int("abc")
+except ValueError as e:
+    print("转换失败：", e)</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果 · 点击上方「运行」即时执行</div>
+    <pre></pre>
+  </div>
+
+  <nav class="pager">
+    <a href="01-oop.html">← 第 1 课</a>
+    <a href="../index.html">目录</a>
+    <a href="03-files.html">第 3 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+<script src="../../assets/python.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>函数指针与递归 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">C 语言教程 · 第 6 课</span></div>
+    <h1 class="mi-title">函数指针与递归</h1>
+    <p class="mi-lead">函数指针让函数也能作为参数传递；递归是函数调用自身求解问题。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>函数指针声明：<code>int (*fp)(int, int)</code>，指向返回 int、接收两个 int 的函数。</li>
+      <li>把函数指针作为参数即可实现回调。</li>
+      <li>递归要有终止条件，否则会栈溢出。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">funcptr.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+
+int add(int a, int b) { return a + b; }
+int mul(int a, int b) { return a * b; }
+
+int apply(int (*op)(int, int), int a, int b) {
+    return op(a, b);
+}
+
+long factorial(int n) {
+    return n &lt;= 1 ? 1 : n * factorial(n - 1);
+}
+
+int main(void) {
+    printf("apply(add, 3, 5) = %d\n", apply(add, 3, 5));
+    printf("apply(mul, 3, 5) = %d\n", apply(mul, 3, 5));
+    printf("5! = %ld\n", factorial(5));
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>apply(add, 3, 5) = 8
+apply(mul, 3, 5) = 15
+5! = 120</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="05-preprocess.html">← 第 5 课</a>
+    <a href="../index.html">目录</a>
+    <span class="off">下一课 →</span>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

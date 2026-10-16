@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>表单与 GET/POST · PHP 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← PHP 教程</a>
+  <span class="mi-chip">PHP</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">PHP 教程 · 第 6 课</span></div>
+    <h1 class="mi-title">表单与 GET/POST</h1>
+    <p class="mi-lead">PHP 最典型的用途之一：接收表单提交的数据并处理。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>$_GET</code> 接收 URL 查询参数，<code>$_POST</code> 接收表单体。</li>
+      <li>输出用户输入前要用 <code>htmlspecialchars()</code> 转义，防止 XSS。</li>
+      <li>用 <code>isset()</code> 判断参数是否存在。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="php">
+    <div class="code-head">
+      <span class="name">form.php</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">&lt;?php
+// 处理提交
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $name = $_POST["name"] ?? "";
+    $safe = htmlspecialchars($name, ENT_QUOTES, "UTF-8");
+    echo "收到：$safe\n";
+} else {
+    echo "请通过表单提交 name 字段\n";
+}
+
+// 模拟 GET 参数
+$page = $_GET["page"] ?? "1";
+echo "当前页：" . intval($page) . "\n";
+?&gt;</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>请通过表单提交 name 字段
+当前页：1</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="05-functions.html">← 第 5 课</a>
+    <a href="../index.html">目录</a>
+    <span class="off">下一课 →</span>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

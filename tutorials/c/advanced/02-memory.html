@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>动态内存分配 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">C 语言教程 · 第 2 课</span></div>
+    <h1 class="mi-title">动态内存分配</h1>
+    <p class="mi-lead">运行时按需申请堆内存，用完必须释放，否则内存泄漏。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>malloc</code> 申请、<code>calloc</code> 申请并清零、<code>realloc</code> 调整大小、<code>free</code> 释放。</li>
+      <li>申请后要检查是否返回 <code>NULL</code>（申请失败）。</li>
+      <li>每一处 <code>malloc</code> 都应有对应的 <code>free</code>。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">memory.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void) {
+    int n = 5;
+    int *arr = malloc(n * sizeof(int));
+    if (arr == NULL) {
+        fprintf(stderr, "内存申请失败\n");
+        return 1;
+    }
+    for (int i = 0; i &lt; n; i++) {
+        arr[i] = (i + 1) * (i + 1);
+    }
+    for (int i = 0; i &lt; n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    free(arr);
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>1 4 9 16 25</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="01-pointers.html">← 第 1 课</a>
+    <a href="../index.html">目录</a>
+    <a href="03-structs.html">第 3 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

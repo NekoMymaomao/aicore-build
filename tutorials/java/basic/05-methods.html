@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>方法 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">Java 教程 · 第 5 课</span></div>
+    <h1 class="mi-title">方法</h1>
+    <p class="mi-lead">方法把逻辑封装成可复用单元，支持重载。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>方法签名：修饰符 + 返回类型 + 方法名 + 参数列表。</li>
+      <li>方法重载：同名不同参数列表。</li>
+      <li><code>static</code> 方法属于类，可直接调用。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">Methods.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">public class Methods {
+    static int add(int a, int b) {
+        return a + b;
+    }
+
+    static double add(double a, double b) {
+        return a + b;
+    }
+
+    static int add(int a, int b, int c) {
+        return a + b + c;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(add(3, 4));
+        System.out.println(add(1.5, 2.5));
+        System.out.println(add(1, 2, 3));
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>7
+4.0
+6</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="04-arrays-strings.html">← 第 4 课</a>
+    <a href="../index.html">目录</a>
+    <a href="06-oop-basics.html">第 6 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

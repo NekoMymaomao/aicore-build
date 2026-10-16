@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>类与对象 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">Java 教程 · 第 6 课</span></div>
+    <h1 class="mi-title">类与对象</h1>
+    <p class="mi-lead">类是对象的模板，对象是类的实例。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>class</code> 定义类，<code>new</code> 创建对象。</li>
+      <li>构造方法名与类名相同；<code>this</code> 指当前对象。</li>
+      <li>用 <code>private</code> 隐藏字段，提供 getter/setter 封装。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">Person.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() { return name; }
+    public int getAge() { return age; }
+
+    public String greet() {
+        return "我是 " + name + "，" + age + " 岁";
+    }
+
+    public static void main(String[] args) {
+        Person p = new Person("小明", 20);
+        System.out.println(p.greet());
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>我是 小明，20 岁</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="05-methods.html">← 第 5 课</a>
+    <a href="../index.html">目录</a>
+    <span class="off">下一课 →</span>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

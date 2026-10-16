@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>预处理与头文件 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">C 语言教程 · 第 5 课</span></div>
+    <h1 class="mi-title">预处理与头文件</h1>
+    <p class="mi-lead">预处理在编译前进行，负责宏替换、文件包含和条件编译。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>#define</code> 定义常量或宏，替换发生在编译之前。</li>
+      <li><code>#include</code> 把别的文件内容包含进来；自定义头文件用双引号。</li>
+      <li><code>#ifdef / #ifndef</code> 条件编译，头文件保护避免重复包含。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">preprocess.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+
+#define PI 3.14159
+#define SQUARE(x) ((x) * (x))
+
+int main(void) {
+    printf("PI = %.5f\n", PI);
+    printf("3 的平方 = %d\n", SQUARE(3));
+#ifdef DEBUG
+    printf("调试模式\n");
+#else
+    printf("发布模式\n");
+#endif
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>PI = 3.14159
+3 的平方 = 9
+发布模式</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="04-files.html">← 第 4 课</a>
+    <a href="../index.html">目录</a>
+    <a href="06-function-pointers.html">第 6 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

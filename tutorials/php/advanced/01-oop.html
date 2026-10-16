@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>面向对象 · PHP 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← PHP 教程</a>
+  <span class="mi-chip">PHP</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">PHP 教程 · 第 1 课</span></div>
+    <h1 class="mi-title">面向对象</h1>
+    <p class="mi-lead">PHP 支持完整的面向对象：类、继承、接口、抽象类。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>class</code> / <code>new</code>；<code>__construct</code> 是构造方法。</li>
+      <li><code>extends</code> 继承，<code>interface</code> 定义契约。</li>
+      <li>可见性 <code>public</code> / <code>protected</code> / <code>private</code>。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="php">
+    <div class="code-head">
+      <span class="name">oop.php</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">&lt;?php
+interface Speaker {
+    public function speak(): string;
+}
+
+class Animal {
+    public function __construct(protected string $name) {}
+}
+
+class Dog extends Animal implements Speaker {
+    public function speak(): string { return "汪汪"; }
+}
+
+class Cat extends Animal implements Speaker {
+    public function speak(): string { return "喵喵"; }
+}
+
+foreach ([new Dog("旺财"), new Cat("咪咪")] as $a) {
+    echo $a-&gt;name . " 说 " . $a-&gt;speak() . "\n";
+}
+?&gt;</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>旺财 说 汪汪
+咪咪 说 喵喵</pre>
+  </div>
+
+  <nav class="pager">
+    <span class="off">← 上一课</span>
+    <a href="../index.html">目录</a>
+    <a href="02-strings.html">第 2 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

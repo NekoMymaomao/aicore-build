@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>条件与循环 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">C 语言教程 · 第 4 课</span></div>
+    <h1 class="mi-title">条件与循环</h1>
+    <p class="mi-lead">控制流决定程序走哪条路、重复多少次。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>if / else if / else</code> 分支；<code>switch</code> 多分支选择。</li>
+      <li><code>for</code> 适合已知次数的循环，<code>while</code> / <code>do-while</code> 适合条件循环。</li>
+      <li><code>break</code> 跳出循环，<code>continue</code> 跳过本次进入下一次。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">control.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+
+int main(void) {
+    // 根据成绩判断等级
+    int score = 86;
+    if (score &gt;= 90)      printf("优秀\n");
+    else if (score &gt;= 60) printf("及格\n");
+    else                  printf("不及格\n");
+
+    // 计算 1 到 5 的和
+    int sum = 0;
+    for (int i = 1; i &lt;= 5; i++) {
+        sum += i;
+    }
+    printf("1+2+3+4+5 = %d\n", sum);
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>及格
+1+2+3+4+5 = 15</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="03-operators.html">← 第 3 课</a>
+    <a href="../index.html">目录</a>
+    <a href="05-functions.html">第 5 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

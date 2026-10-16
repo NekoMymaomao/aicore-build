@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>变量与数据类型 · PHP 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← PHP 教程</a>
+  <span class="mi-chip">PHP</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">PHP 教程 · 第 2 课</span></div>
+    <h1 class="mi-title">变量与数据类型</h1>
+    <p class="mi-lead">PHP 变量以 $ 开头，类型是动态的。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>变量以 <code>$</code> 开头，无需声明类型。</li>
+      <li>类型：<code>int</code>、<code>float</code>、<code>string</code>、<code>bool</code>、<code>array</code>、<code>null</code>。</li>
+      <li><code>var_dump()</code> 查看类型与值，<code>gettype()</code> 返回类型名。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="php">
+    <div class="code-head">
+      <span class="name">types.php</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">&lt;?php
+$age = 18;
+$height = 1.75;
+$name = "小明";
+$isStudent = true;
+
+echo "$name 今年 $age 岁\n";
+echo "身高：$height\n";
+var_dump($isStudent);
+echo "类型：" . gettype($age) . "\n";
+?&gt;</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>小明 今年 18 岁
+身高：1.75
+bool(true)
+类型：integer</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="01-hello.html">← 第 1 课</a>
+    <a href="../index.html">目录</a>
+    <a href="03-control.html">第 3 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

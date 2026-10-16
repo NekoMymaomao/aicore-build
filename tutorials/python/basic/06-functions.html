@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>函数 · Python 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Python 教程</a>
+  <span class="mi-chip">Python</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">Python 教程 · 第 6 课</span></div>
+    <h1 class="mi-title">函数</h1>
+    <p class="mi-lead">用 def 定义函数，把逻辑封装成可复用的单元。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>def</code> 定义函数，<code>return</code> 返回值。</li>
+      <li>支持默认参数、关键字参数、可变参数 <code>*args</code> / <code>**kwargs</code>。</li>
+      <li>函数是一等对象，可以赋值给变量、作为参数传递。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="python">
+    <div class="code-head">
+      <span class="name">functions.py</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-run" type="button">运行</button>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">def greet(name, greeting="你好"):
+    return f"{greeting}，{name}！"
+
+def total(*nums):
+    return sum(nums)
+
+print(greet("小明"))
+print(greet("Bob", greeting="Hello"))
+print("求和：", total(1, 2, 3, 4))
+
+square = lambda x: x * x
+print("5 的平方：", square(5))</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果 · 点击上方「运行」即时执行</div>
+    <pre></pre>
+  </div>
+
+  <nav class="pager">
+    <a href="05-containers.html">← 第 5 课</a>
+    <a href="../index.html">目录</a>
+    <span class="off">下一课 →</span>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+<script src="../../assets/python.js"></script>
+</body>
+</html>

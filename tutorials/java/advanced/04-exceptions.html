@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>异常处理 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Java 教程 · 第 4 课</span></div>
+    <h1 class="mi-title">异常处理</h1>
+    <p class="mi-lead">异常机制把错误处理与正常逻辑分离。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>try / catch / finally</code>；<code>throw</code> 抛出，<code>throws</code> 声明。</li>
+      <li>受检异常必须处理或声明。</li>
+      <li>多 catch 按从具体到宽泛排列。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">Exceptions.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">public class Exceptions {
+    static int divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("除数不能为 0");
+        }
+        return a / b;
+    }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println(divide(10, 2));
+            System.out.println(divide(10, 0));
+        } catch (ArithmeticException e) {
+            System.out.println("捕获异常：" + e.getMessage());
+        } finally {
+            System.out.println("处理结束");
+        }
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>5
+捕获异常：除数不能为 0
+处理结束</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="03-collections.html">← 第 3 课</a>
+    <a href="../index.html">目录</a>
+    <a href="05-generics.html">第 5 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

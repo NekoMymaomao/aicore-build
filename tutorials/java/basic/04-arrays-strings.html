@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数组与字符串 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">基础</span><span class="mi-muted">Java 教程 · 第 4 课</span></div>
+    <h1 class="mi-title">数组与字符串</h1>
+    <p class="mi-lead">数组是定长同类型集合，字符串提供了丰富的处理方法。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>数组长度用 <code>arr.length</code>，下标从 0 开始。</li>
+      <li><code>String</code> 常用方法：<code>length()</code>、<code>charAt()</code>、<code>substring()</code>、<code>toUpperCase()</code>。</li>
+      <li><code>StringBuilder</code> 适合频繁拼接。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">ArraysStrings.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">public class ArraysStrings {
+    public static void main(String[] args) {
+        int[] nums = {10, 20, 30, 40, 50};
+        int total = 0;
+        for (int n : nums) {
+            total += n;
+        }
+        System.out.println("总和 = " + total);
+
+        String s = "hello java";
+        System.out.println("长度 = " + s.length());
+        System.out.println("大写 = " + s.toUpperCase());
+        System.out.println("子串 = " + s.substring(0, 5));
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>总和 = 150
+长度 = 10
+大写 = HELLO JAVA
+子串 = hello</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="03-operators.html">← 第 3 课</a>
+    <a href="../index.html">目录</a>
+    <a href="05-methods.html">第 5 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

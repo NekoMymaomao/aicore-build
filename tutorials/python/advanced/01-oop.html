@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>面向对象 · Python 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Python 教程</a>
+  <span class="mi-chip">Python</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Python 教程 · 第 1 课</span></div>
+    <h1 class="mi-title">面向对象</h1>
+    <p class="mi-lead">用类把数据和操作封装在一起，组织更复杂的程序。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>class</code> 定义类，<code>__init__</code> 是构造方法，<code>self</code> 指实例自身。</li>
+      <li>继承：子类复用并扩展父类；<code>super()</code> 调用父类方法。</li>
+      <li><code>__str__</code> 等魔术方法定义对象的字符串表示与运算行为。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="python">
+    <div class="code-head">
+      <span class="name">oop.py</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-run" type="button">运行</button>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return "..."
+
+    def __str__(self):
+        return f"Animal({self.name})"
+
+class Dog(Animal):
+    def speak(self):
+        return "汪汪"
+
+class Cat(Animal):
+    def speak(self):
+        return "喵喵"
+
+for a in [Dog("旺财"), Cat("咪咪")]:
+    print(a.name, "说", a.speak())
+print(Dog("旺财"))</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果 · 点击上方「运行」即时执行</div>
+    <pre></pre>
+  </div>
+
+  <nav class="pager">
+    <span class="off">← 上一课</span>
+    <a href="../index.html">目录</a>
+    <a href="02-exceptions.html">第 2 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+<script src="../../assets/python.js"></script>
+</body>
+</html>

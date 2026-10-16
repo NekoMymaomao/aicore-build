@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>指针 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">C 语言教程 · 第 1 课</span></div>
+    <h1 class="mi-title">指针</h1>
+    <p class="mi-lead">指针保存的是内存地址，是 C 最核心也最容易出错的概念。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>&amp;x</code> 取变量地址，<code>*p</code> 解引用取出该地址的值。</li>
+      <li>指针作为参数可以让函数修改调用方的变量。</li>
+      <li>指针与数组关系紧密：数组名可退化为指向首元素的指针。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">pointers.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+
+void swap(int *a, int *b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int main(void) {
+    int x = 1, y = 2;
+    printf("交换前：x=%d y=%d\n", x, y);
+    swap(&amp;x, &amp;y);
+    printf("交换后：x=%d y=%d\n", x, y);
+
+    int arr[3] = {5, 6, 7};
+    int *p = arr;
+    printf("*(p+1) = %d\n", *(p + 1));
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>交换前：x=1 y=2
+交换后：x=2 y=1
+*(p+1) = 6</pre>
+  </div>
+
+  <nav class="pager">
+    <span class="off">← 上一课</span>
+    <a href="../index.html">目录</a>
+    <a href="02-memory.html">第 2 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>结构体与联合体 · C 语言教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← C 语言教程</a>
+  <span class="mi-chip">C</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">C 语言教程 · 第 3 课</span></div>
+    <h1 class="mi-title">结构体与联合体</h1>
+    <p class="mi-lead">结构体把不同类型的数据打包成一个整体，描述现实中的对象。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>struct</code> 定义自定义类型；<code>.</code> 访问成员，指针用 <code>-&gt;</code>。</li>
+      <li><code>typedef</code> 给类型起别名，简化书写。</li>
+      <li><code>union</code> 的成员共用同一块内存，同一时刻只有一个有效。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="c">
+    <div class="code-head">
+      <span class="name">structs.c</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+typedef struct {
+    char name[20];
+    int age;
+} Student;
+
+int main(void) {
+    Student s;
+    strcpy(s.name, "小明");
+    s.age = 20;
+
+    Student *p = &amp;s;
+    printf("%s 今年 %d 岁\n", p-&gt;name, p-&gt;age);
+    return 0;
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>小明 今年 20 岁</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="02-memory.html">← 第 2 课</a>
+    <a href="../index.html">目录</a>
+    <a href="04-files.html">第 4 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

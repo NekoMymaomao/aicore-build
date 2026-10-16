@@ -1,0 +1,124 @@
+/* ==========================================================================
+   tutorial.css — 教程页专用样式（知识点、代码框、运行结果、分页）
+   依赖 theme.css 的设计令牌与 .glass 材质。
+   ========================================================================== */
+
+.tut-head { margin: 20px 0 18px; }
+.tut-head .kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+
+.points { margin: 0 0 18px; padding: 4px 22px 16px; }
+.points h2 { font-size: 15px; color: var(--accent-strong); margin: 16px 0 8px; }
+.points ul { margin: 0; padding-left: 20px; }
+.points li { margin: 6px 0; }
+.points strong { color: var(--text); }
+
+code:not(.code) {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.86em;
+  font-family: ui-monospace, Consolas, "Courier New", monospace;
+}
+
+/* ------------------------------- 代码框 ------------------------------- */
+
+.code-box {
+  background: var(--code-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin: 0;
+}
+.code-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--code-head);
+  color: #9aa4c0;
+  font: 13px/1.5 ui-monospace, Consolas, monospace;
+}
+.code-head .name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.code-head .spacer { flex: 1; }
+.code-btn {
+  background: #2c3350;
+  color: #dfe4f2;
+  border: 0;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.code-btn:hover { background: #3a4468; }
+.code-btn[disabled] { opacity: 0.5; cursor: default; }
+
+.code-scroll { overflow: auto; max-height: 520px; }
+pre.code {
+  margin: 0;
+  padding: 14px 16px;
+  color: var(--code-text);
+  font: 13.5px/1.65 ui-monospace, Consolas, "Courier New", monospace;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* 高亮 token */
+.tok-key { color: #ff8bd0; }
+.tok-str { color: #a5e075; }
+.tok-com { color: #6a7692; font-style: italic; }
+.tok-num { color: #ffc46b; }
+.tok-fn  { color: #7cc4ff; }
+.tok-pre { color: #c79bff; }
+.tok-typ { color: #63e6d4; }
+
+/* ------------------------------ 运行结果 ------------------------------ */
+
+.output {
+  margin-top: 14px;
+  background: rgba(10, 14, 22, 0.92);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.output-head {
+  padding: 7px 12px;
+  color: #8f9bb5;
+  font: 13px/1.5 ui-monospace, Consolas, monospace;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.output pre {
+  margin: 0;
+  padding: 12px 16px;
+  color: #b6f0c8;
+  font: 13px/1.6 ui-monospace, Consolas, "Courier New", monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 22px;
+}
+.output .err { color: #ff9a9a; }
+.output .dim { color: #77809a; }
+
+/* -------------------------------- 分页 -------------------------------- */
+
+.pager { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 26px 0 6px; font-size: 14px; }
+.pager .off { color: var(--text-faint); }
+.pager a { font-weight: 600; }
+
+/* 目录页 */
+.track-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+.lesson-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.lesson-list .mi-row { width: 100%; }
+.lesson-list .no { color: var(--accent-strong); font: 700 16px/1 ui-monospace, Consolas, monospace; }
+.lesson-list .t { font-weight: 600; }
+.lesson-list .d { margin-left: auto; text-align: right; color: var(--text-faint); font-size: 13px; }
+
+.section-title { font-size: 16px; font-weight: 700; margin: 26px 0 12px; color: var(--text-soft); }
+.track { padding: 20px 20px; display: block; color: inherit; }
+.track:hover { text-decoration: none; }
+.track strong { display: block; font-size: 18px; margin: 10px 0 4px; }
+.track .note { display: block; color: var(--text-soft); font-size: 13px; }
+.track .go { display: block; margin-top: 14px; color: var(--accent-strong); font-weight: 600; font-size: 14px; }

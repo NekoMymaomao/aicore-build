@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>错误处理与命名空间 · PHP 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← PHP 教程</a>
+  <span class="mi-chip">PHP</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">PHP 教程 · 第 6 课</span></div>
+    <h1 class="mi-title">错误处理与命名空间</h1>
+    <p class="mi-lead">异常处理与命名空间让大型项目更健壮、更易组织。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>try / catch / finally</code> 捕获异常，<code>throw</code> 抛出。</li>
+      <li>自定义异常继承 <code>Exception</code>。</li>
+      <li><code>namespace</code> 隔离命名，<code>use</code> 引入；配合 Composer 自动加载。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="php">
+    <div class="code-head">
+      <span class="name">errors.php</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">&lt;?php
+class ValidationException extends Exception {}
+
+function checkAge(int $age): void {
+    if ($age &lt; 0) {
+        throw new ValidationException("年龄不能为负数");
+    }
+}
+
+try {
+    checkAge(-1);
+} catch (ValidationException $e) {
+    echo "校验失败：" . $e-&gt;getMessage() . "\n";
+} finally {
+    echo "检查结束\n";
+}
+
+// 命名空间
+namespace App\Utils;
+function version() { return "1.0"; }
+echo "版本：" . version() . "\n";
+?&gt;</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>校验失败：年龄不能为负数
+检查结束
+版本：1.0</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="05-pdo.html">← 第 5 课</a>
+    <a href="../index.html">目录</a>
+    <span class="off">下一课 →</span>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

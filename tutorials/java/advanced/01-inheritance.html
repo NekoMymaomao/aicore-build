@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>继承与多态 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Java 教程 · 第 1 课</span></div>
+    <h1 class="mi-title">继承与多态</h1>
+    <p class="mi-lead">继承复用父类能力，多态让同一调用表现出不同行为。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>extends</code> 继承父类；<code>@Override</code> 重写方法。</li>
+      <li>父类引用可以指向子类对象（向上转型）。</li>
+      <li><code>super</code> 调用父类构造或方法。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">Animals.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">class Animal {
+    String name;
+    Animal(String name) { this.name = name; }
+    String speak() { return "..."; }
+}
+
+class Dog extends Animal {
+    Dog(String name) { super(name); }
+    @Override String speak() { return "汪汪"; }
+}
+
+class Cat extends Animal {
+    Cat(String name) { super(name); }
+    @Override String speak() { return "喵喵"; }
+}
+
+public class Animals {
+    public static void main(String[] args) {
+        Animal[] zoo = { new Dog("旺财"), new Cat("咪咪") };
+        for (Animal a : zoo) {
+            System.out.println(a.name + " 说 " + a.speak());
+        }
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>旺财 说 汪汪
+咪咪 说 喵喵</pre>
+  </div>
+
+  <nav class="pager">
+    <span class="off">← 上一课</span>
+    <a href="../index.html">目录</a>
+    <a href="02-interfaces.html">第 2 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

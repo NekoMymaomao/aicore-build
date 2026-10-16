@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>集合框架 · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Java 教程 · 第 3 课</span></div>
+    <h1 class="mi-title">集合框架</h1>
+    <p class="mi-lead">集合框架提供了动态、功能丰富的容器。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li><code>List</code> 有序可重复（<code>ArrayList</code>）。</li>
+      <li><code>Set</code> 去重（<code>HashSet</code>）。</li>
+      <li><code>Map</code> 键值对（<code>HashMap</code>）；泛型指定元素类型。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">CollectionsDemo.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">import java.util.*;
+
+public class CollectionsDemo {
+    public static void main(String[] args) {
+        List&lt;String&gt; fruits = new ArrayList&lt;&gt;();
+        fruits.add("apple");
+        fruits.add("banana");
+        fruits.add("apple");
+        System.out.println("列表：" + fruits);
+
+        Set&lt;String&gt; unique = new HashSet&lt;&gt;(fruits);
+        System.out.println("去重：" + unique);
+
+        Map&lt;String, Integer&gt; scores = new HashMap&lt;&gt;();
+        scores.put("math", 95);
+        scores.put("english", 88);
+        System.out.println("数学：" + scores.get("math"));
+        System.out.println("科目：" + scores.keySet());
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>列表：[apple, banana, apple]
+去重：[banana, apple]
+数学：95
+科目：[english, math]</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="02-interfaces.html">← 第 2 课</a>
+    <a href="../index.html">目录</a>
+    <a href="04-exceptions.html">第 4 课 →</a>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

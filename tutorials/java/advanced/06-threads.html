@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>多线程与 Lambda · Java 教程</title>
+<link rel="stylesheet" href="../../assets/theme.css">
+<link rel="stylesheet" href="../../assets/tutorial.css">
+</head>
+<body>
+<div class="mi-navbar glass glass--liquid">
+  <a href="../index.html">← Java 教程</a>
+  <span class="mi-chip">Java</span>
+  <button class="mi-theme-toggle js-theme-toggle" type="button" onclick="void 0">深色</button>
+</div>
+<div class="wrap">
+  <header class="tut-head">
+    <div class="kicker"><span class="mi-chip">高级</span><span class="mi-muted">Java 教程 · 第 6 课</span></div>
+    <h1 class="mi-title">多线程与 Lambda</h1>
+    <p class="mi-lead">多线程让任务并发执行；Lambda 让函数式写法更简洁。</p>
+  </header>
+
+  <section class="points glass glass--liquid">
+    <h2>知识点</h2>
+    <ul>
+      <li>继承 <code>Thread</code> 或实现 <code>Runnable</code> 创建线程。</li>
+      <li><code>start()</code> 启动线程，<code>join()</code> 等待结束。</li>
+      <li>Lambda：<code>(a, b) -&gt; a + b</code>，配合函数式接口使用。</li>
+    </ul>
+  </section>
+
+  <section class="code-box" data-lang="java">
+    <div class="code-head">
+      <span class="name">ThreadsLambda.java</span>
+      <span class="spacer"></span>
+      <button class="code-btn js-copy" type="button">复制</button>
+    </div>
+    <div class="code-scroll"><pre class="code">import java.util.*;
+
+public class ThreadsLambda {
+    public static void main(String[] args) throws InterruptedException {
+        Thread t = new Thread(() -&gt; {
+            for (int i = 1; i &lt;= 3; i++) {
+                System.out.println("子线程 " + i);
+            }
+        });
+        t.start();
+        t.join();
+        System.out.println("主线程结束");
+
+        List&lt;Integer&gt; nums = Arrays.asList(3, 1, 2);
+        nums.sort((a, b) -&gt; a - b);
+        System.out.println("排序后：" + nums);
+    }
+}</pre></div>
+  </section>
+  <div class="output">
+    <div class="output-head">运行结果（示意）</div>
+    <pre>子线程 1
+子线程 2
+子线程 3
+主线程结束
+排序后：[1, 2, 3]</pre>
+  </div>
+
+  <nav class="pager">
+    <a href="05-generics.html">← 第 5 课</a>
+    <a href="../index.html">目录</a>
+    <span class="off">下一课 →</span>
+  </nav>
+</div>
+<script src="../../assets/tutorial.js"></script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+/* ==========================================================================
+   theme.css — 教程站设计系统（HyperOS 风格 + 液态/磨砂玻璃）
+   说明：原计划引入的 Miuix 是 Compose Multiplatform 库，无 Web 版本，
+   故此处以纯 CSS 复刻其观感，并实现液态玻璃（backdrop-filter），
+   在不支持 backdrop-filter 的环境降级为磨砂玻璃。
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  --accent: #3482ff;
+  --accent-strong: #1f6bff;
+  --accent-soft: rgba(52, 130, 255, 0.12);
+
+  --bg: #eef1f7;
+  --bg-grad-1: #dfe7ff;
+  --bg-grad-2: #f5ecff;
+  --bg-grad-3: #e6fbf4;
+
+  --text: #1a1d24;
+  --text-soft: #5b6472;
+  --text-faint: #8a93a5;
+
+  --surface: rgba(255, 255, 255, 0.62);
+  --surface-solid: #ffffff;
+  --surface-2: rgba(255, 255, 255, 0.42);
+  --border: rgba(255, 255, 255, 0.55);
+  --hairline: rgba(20, 26, 40, 0.08);
+  --shadow: 0 10px 30px rgba(30, 45, 90, 0.10);
+  --shadow-sm: 0 4px 14px rgba(30, 45, 90, 0.08);
+
+  --code-bg: #1b2030;
+  --code-head: #151a26;
+  --code-text: #e6e9f4;
+  --code-line: #232a3d;
+
+  --radius-lg: 22px;
+  --radius: 16px;
+  --radius-sm: 12px;
+
+  --blur: 22px;
+  --sat: 165%;
+}
+
+:root[data-theme="dark"],
+html[data-theme="dark"] {
+  --bg: #0e1116;
+  --bg-grad-1: #16203a;
+  --bg-grad-2: #241733;
+  --bg-grad-3: #0f2a26;
+
+  --text: #eef1f7;
+  --text-soft: #aeb7c8;
+  --text-faint: #7d879a;
+
+  --surface: rgba(30, 36, 48, 0.55);
+  --surface-solid: #1a1f29;
+  --surface-2: rgba(40, 47, 62, 0.42);
+  --border: rgba(255, 255, 255, 0.12);
+  --hairline: rgba(255, 255, 255, 0.08);
+  --shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+  --accent-soft: rgba(52, 130, 255, 0.20);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1116;
+    --bg-grad-1: #16203a;
+    --bg-grad-2: #241733;
+    --bg-grad-3: #0f2a26;
+    --text: #eef1f7;
+    --text-soft: #aeb7c8;
+    --text-faint: #7d879a;
+    --surface: rgba(30, 36, 48, 0.55);
+    --surface-solid: #1a1f29;
+    --surface-2: rgba(40, 47, 62, 0.42);
+    --border: rgba(255, 255, 255, 0.12);
+    --hairline: rgba(255, 255, 255, 0.08);
+    --shadow: 0 12px 34px rgba(0, 0, 0, 0.5);
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --accent-soft: rgba(52, 130, 255, 0.20);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--bg);
+  font: 16px/1.7 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 背景色斑，让玻璃有内容可模糊 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20vmax;
+  z-index: -1;
+  background:
+    radial-gradient(42vmax 42vmax at 12% 8%, var(--bg-grad-1), transparent 62%),
+    radial-gradient(38vmax 38vmax at 88% 18%, var(--bg-grad-2), transparent 60%),
+    radial-gradient(44vmax 44vmax at 50% 100%, var(--bg-grad-3), transparent 62%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+a { color: var(--accent-strong); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 26px 18px 64px; }
+
+/* ------------------------------ 玻璃材质 ------------------------------ */
+
+.glass {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+}
+
+/* 液态玻璃：镜面高光 + 内描边 */
+.glass--liquid {
+  overflow: hidden;
+}
+.glass--liquid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 42%),
+    radial-gradient(120% 80% at 80% -10%, rgba(255, 255, 255, 0.5), transparent 55%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+.glass--liquid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
+              inset 0 -1px 0 rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+:root[data-theme="dark"] .glass--liquid::before,
+html[data-theme="dark"] .glass--liquid::before { opacity: 0.18; }
+
+/* 降级：不支持 backdrop-filter → 磨砂玻璃（不透的柔化实底） */
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .glass {
+    background: color-mix(in srgb, var(--surface-solid) 88%, transparent);
+  }
+  .glass--liquid::before { opacity: 0.35; }
+}
+
+/* ------------------------------ 基础组件 ------------------------------ */
+
+.mi-surface { padding: 18px 20px; }
+.mi-card {
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.mi-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 999px;
+  font: 600 14px/1.2 inherit;
+  color: #fff;
+  background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+  box-shadow: 0 6px 16px rgba(52, 130, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+}
+.mi-btn:hover { transform: translateY(-1px); }
+.mi-btn:active { transform: translateY(0); opacity: 0.9; }
+.mi-btn--tonal {
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  box-shadow: none;
+}
+.mi-btn--text {
+  color: var(--text-soft);
+  background: transparent;
+  box-shadow: none;
+  font-weight: 500;
+}
+.mi-btn--sm { padding: 5px 12px; font-size: 13px; }
+
+.mi-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font: 700 12px/1.6 ui-monospace, Consolas, monospace;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.mi-navbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.mi-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+
+.mi-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+a.mi-row { text-decoration: none; }
+a.mi-row:hover { transform: translateY(-2px); box-shadow: var(--shadow); text-decoration: none; }
+
+.mi-title { font-size: clamp(22px, 4vw, 30px); margin: 0; letter-spacing: 0.2px; }
+.mi-lead { color: var(--text-soft); margin: 6px 0 0; }
+.mi-muted { color: var(--text-faint); font-size: 13px; }
+
+.mi-theme-toggle {
+  margin-left: auto;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-soft);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.mi-corner-squircle { corner-shape: squircle; }
